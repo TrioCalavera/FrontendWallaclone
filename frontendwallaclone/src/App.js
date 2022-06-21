@@ -1,7 +1,13 @@
+import HeaderPage from "./components/HeaderPage";
+import FooterPage from "./components/FooterPage";
+import Main from "./components/Main";
+
 function App() {
   return (
     <div className="App">
-      <h1>HOLA CUARTETO CALAVERA</h1>
+      <HeaderPage />
+      <Main />
+      <FooterPage />
     </div>
   );
 }

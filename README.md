@@ -1,5 +1,11 @@
 # FrontendWallaclone
 
+## Inicio
+
+- cd frontendwallaclone
+- npm i
+- cp .env.example .env
+
 ## Available Scripts
 
 In the project directory, you can run:

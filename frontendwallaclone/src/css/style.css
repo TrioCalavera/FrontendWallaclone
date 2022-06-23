@@ -2729,28 +2729,3 @@ form textarea {
   color: #fff !important;
   text-decoration: none;
 }
-
-.top-to {
-  position: absolute;
-  right: 20px;
-  bottom: 50px;
-  display: flex;
-  justify-content: center;
-}
-
-.top-to a {
-  width: 40px;
-  height: 40px;
-  background: #5672f9;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-}
-
-.top-to a i {
-  line-height: 40px;
-}
-
-.top-to a:hover {
-  text-decoration: none;
-}

@@ -55,13 +55,6 @@ const Subfooter = () => {
           </div>
         </div>
       </div>
-      {/* <!-- Container End -->
-    <!-- To Top --> */}
-      <div className="top-to">
-        <a id="top" className="" href="#">
-          <i className="fa fa-angle-up"></i>
-        </a>
-      </div>
     </footer>
   );
 };

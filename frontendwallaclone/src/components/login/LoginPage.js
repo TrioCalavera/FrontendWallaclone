@@ -9,6 +9,7 @@ function LoginPage() {
     remember: false,
   });
 
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { email, password, remember } = credentials;
 
@@ -21,18 +22,24 @@ function LoginPage() {
           : event.target.value,
     }));
   }, []);
-
+ 
   const resetError = () => setError(null);
 
   const handleSubmit = async event => {
     event.preventDefault();
     try{
       resetError();
+      setIsLoading(true);
       await login(credentials);
+      setIsLoading(false);
     }catch(error){
       setError(error);
     }
   }
+
+  const buttonDisabled = useMemo(() => {
+    return !email || !password || isLoading;
+  }, [email, password, isLoading]);
 
   return (
     <Layout>
@@ -71,7 +78,8 @@ function LoginPage() {
                     </div>
                     <button
                       type="submit"
-                      className="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3"
+                      className="btn py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3"
+                      disabled={buttonDisabled}
                     >
                       Log in
                     </button>

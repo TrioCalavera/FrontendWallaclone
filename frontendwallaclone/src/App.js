@@ -7,6 +7,7 @@ import AdsContent from "./components/ads/AdsContent";
 import AdDetails from "./components/ads/AdDetails";
 import NotFound from "./components/layout/NotFound";
 import AdNew from "./components/ads/AdNew";
+import UserProfile from "./components/user/UserProfile";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
 
         {/* Hay que proteger RUTAS. NO OLVIDAR!! */}
         <Route path="/new" element={<AdNew />} />
+        <Route path="/user-profile" element={<UserProfile />} />
 
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

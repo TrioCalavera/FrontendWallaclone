@@ -54,12 +54,12 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li className="nav-item dropdown dropdown-slide">
-                    <Link to="/" className="nav-link dropdown-toggle">
+                    <a href="#" className="nav-link dropdown-toggle">
                       Pages{" "}
                       <span>
                         <i className="fa fa-angle-down"></i>
                       </span>
-                    </Link>
+                    </a>
                     {/* <!-- Dropdown list --> */}
                     <div className="dropdown-menu">
                       <NavLink

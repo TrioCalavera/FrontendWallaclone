@@ -6,6 +6,7 @@ import RegisterPage from "./components/register/RegisterPage";
 import AdsContent from "./components/ads/AdsContent";
 import AdDetails from "./components/ads/AdDetails";
 import NotFound from "./components/layout/NotFound";
+import AdNew from "./components/ads/AdNew";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Route path="/" element={<Navigate to="/adverts" />} />
         <Route path="/adverts" element={<AdsContent />} />
         <Route path="/adverts/:adsId" element={<AdDetails />} />
+
+        {/* Hay que proteger RUTAS. NO OLVIDAR!! */}
+        <Route path="/new" element={<AdNew />} />
 
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

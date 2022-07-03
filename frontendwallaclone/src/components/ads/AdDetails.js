@@ -1,6 +1,6 @@
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import { Link } from "react-router-dom";
-import AdDetailsCss from "./css/adDetails.css";
+import "./css/adDetails.css";
 
 import Product1 from "../../images/products-1.jpg";
 import userThumb from "../../images/user-gray.png";

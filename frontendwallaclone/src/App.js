@@ -13,7 +13,7 @@ function App() {
       <ScrollTop />
       <Routes>
         {/* Rutas generales */}
-        <Route path="/" element={<AdsContent />} />
+        <Route path="/" element={<Navigate to="/adverts" />} />
         <Route path="/adverts" element={<AdsContent />} />
         <Route path="/adverts/:adsId" element={<AdDetails />} />
 

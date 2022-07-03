@@ -1,7 +1,7 @@
-import Layout from "../layout/Layout";
+import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 const LoginPage = () => {
   return (
-    <Layout>
+    <LayoutWithoutBanner>
       <section className="login py-5 border-top-1">
         <div className="container">
           <div className="row justify-content-center">
@@ -51,7 +51,7 @@ const LoginPage = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </LayoutWithoutBanner>
   );
 };
 

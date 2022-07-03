@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 const Navbar = () => {
@@ -31,10 +31,27 @@ const Navbar = () => {
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav ml-auto main-nav">
-                  <li className="nav-item active">
-                    <Link to="/" className="nav-link">
+                  <li className="nav-item">
+                    <NavLink
+                      to="/adverts"
+                      className="nav-link"
+                      style={({ isActive }) =>
+                        isActive ? { color: "#4883ff" } : null
+                      }
+                    >
                       Home
-                    </Link>
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink
+                      to="/user-profile"
+                      className="nav-link"
+                      style={({ isActive }) =>
+                        isActive ? { color: "#4883ff" } : null
+                      }
+                    >
+                      User
+                    </NavLink>
                   </li>
                   <li className="nav-item dropdown dropdown-slide">
                     <Link to="/" className="nav-link dropdown-toggle">
@@ -45,33 +62,30 @@ const Navbar = () => {
                     </Link>
                     {/* <!-- Dropdown list --> */}
                     <div className="dropdown-menu">
-                      <a className="dropdown-item" href="about-us.html">
-                        About Us
-                      </a>
-                      <a className="dropdown-item" href="contact-us.html">
-                        Contact Us
-                      </a>
-                      <a className="dropdown-item" href="user-profile.html">
-                        User Profile
-                      </a>
-                      <a className="dropdown-item" href="404.html">
+                      <NavLink
+                        to="/user-profile"
+                        className="dropdown-item"
+                        style={({ isActive }) =>
+                          isActive ? { color: "#fff" } : null
+                        }
+                      >
+                        User
+                      </NavLink>
+                      <NavLink
+                        to="/404"
+                        className="dropdown-item"
+                        style={({ isActive }) =>
+                          isActive ? { color: "#fff" } : null
+                        }
+                      >
                         404 Page
-                      </a>
-                      <a className="dropdown-item" href="package.html">
-                        Package
-                      </a>
-                      <a className="dropdown-item" href="single.html">
-                        Single Page
-                      </a>
-                      <a className="dropdown-item" href="store.html">
-                        Store Single
-                      </a>
-                      <a className="dropdown-item" href="single-blog.html">
-                        Single Post
-                      </a>
-                      <a className="dropdown-item" href="blog.html">
+                      </NavLink>
+                      <Link to="/" className="dropdown-item">
+                        Test
+                      </Link>
+                      <Link to="/" className="dropdown-item">
                         Blog
-                      </a>
+                      </Link>
                     </div>
                   </li>
                 </ul>

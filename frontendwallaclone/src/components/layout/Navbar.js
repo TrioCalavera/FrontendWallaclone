@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 const Navbar = () => {
@@ -11,9 +12,9 @@ const Navbar = () => {
         <div className="row">
           <div className="col-md-12">
             <nav className="navbar navbar-expand-lg navbar-light navigation">
-              <a className="navbar-brand" href="index.html">
+              <Link to="/" className="navbar-brand">
                 <img src={logo} alt="" />
-              </a>
+              </Link>
               <button
                 className="navbar-toggler"
                 type="button"
@@ -31,45 +32,9 @@ const Navbar = () => {
               >
                 <ul className="navbar-nav ml-auto main-nav">
                   <li className="nav-item active">
-                    <a className="nav-link" href="index.html">
+                    <Link to="/" className="nav-link">
                       Home
-                    </a>
-                  </li>
-                  <li className="nav-item dropdown dropdown-slide">
-                    <a className="nav-link dropdown-toggle" href="">
-                      Dashboard
-                      <span>
-                        <i className="fa fa-angle-down"></i>
-                      </span>
-                    </a>
-
-                    {/* <!-- Dropdown list --> */}
-                    <div className="dropdown-menu">
-                      <a className="dropdown-item" href="dashboard.html">
-                        Dashboard
-                      </a>
-                      <a className="dropdown-item" href="dashboard-my-ads.html">
-                        Dashboard My Ads
-                      </a>
-                      <a
-                        className="dropdown-item"
-                        href="dashboard-favourite-ads.html"
-                      >
-                        Dashboard Favourite Ads
-                      </a>
-                      <a
-                        className="dropdown-item"
-                        href="dashboard-archived-ads.html"
-                      >
-                        Dashboard Archived Ads
-                      </a>
-                      <a
-                        className="dropdown-item"
-                        href="dashboard-pending-ads.html"
-                      >
-                        Dashboard Pending Ads
-                      </a>
-                    </div>
+                    </Link>
                   </li>
                   <li className="nav-item dropdown dropdown-slide">
                     <a className="nav-link dropdown-toggle" href="#">
@@ -109,37 +74,22 @@ const Navbar = () => {
                       </a>
                     </div>
                   </li>
-                  <li className="nav-item dropdown dropdown-slide">
-                    <a className="nav-link dropdown-toggle" href="">
-                      Listing{" "}
-                      <span>
-                        <i className="fa fa-angle-down"></i>
-                      </span>
-                    </a>
-                    {/* <!-- Dropdown list --> */}
-                    <div className="dropdown-menu">
-                      <a className="dropdown-item" href="category.html">
-                        Ad-Gird View
-                      </a>
-                      <a className="dropdown-item" href="ad-listing-list.html">
-                        Ad-List View
-                      </a>
-                    </div>
-                  </li>
                 </ul>
                 <ul className="navbar-nav ml-auto mt-10">
                   <li className="nav-item">
-                    <a className="nav-link login-button" href="login.html">
+                    <Link to="/register" className="nav-link login-button">
                       Login
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a
-                      className="nav-link text-white add-button"
-                      href="ad-listing.html"
-                    >
-                      <i className="fa fa-plus-circle"></i> Add Listing
-                    </a>
+                    <Link to="/login" className="nav-link login-button">
+                      Register
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link text-white add-button" to="/new">
+                      <i className="fa fa-plus-circle"></i> New Ad
+                    </Link>
                   </li>
                 </ul>
               </div>

@@ -1,4 +1,5 @@
 import Searcher from "./Searcher";
+import { Link } from "react-router-dom";
 
 const HeaderPage = () => {
   return (
@@ -17,29 +18,29 @@ const HeaderPage = () => {
                 <h2>Popular Category</h2>
                 <ul className="list-inline">
                   <li className="list-inline-item">
-                    <a href="category.html">
-                      <i className="fa fa-bed"></i> Hotel
-                    </a>
+                    <Link to="/">
+                      <i className="fa fa-briefcase"></i> Work
+                    </Link>
                   </li>
                   <li className="list-inline-item">
-                    <a href="category.html">
-                      <i className="fa fa-grav"></i> Fitness
-                    </a>
+                    <Link to="/">
+                      <i className="fa fa-heart"></i> Lifestyle
+                    </Link>
                   </li>
                   <li className="list-inline-item">
-                    <a href="category.html">
-                      <i className="fa fa-car"></i> Cars
-                    </a>
+                    <Link to="/">
+                      <i className="fa fa-mobile"></i> Mobile
+                    </Link>
                   </li>
                   <li className="list-inline-item">
-                    <a href="category.html">
-                      <i className="fa fa-cutlery"></i> Restaurants
-                    </a>
+                    <Link to="/">
+                      <i className="fa fa-car"></i> Motor
+                    </Link>
                   </li>
                   <li className="list-inline-item">
-                    <a href="category.html">
-                      <i className="fa fa-coffee"></i> Cafe
-                    </a>
+                    <Link to="/">
+                      <i className="fa fa-coffee"></i> IT
+                    </Link>
                   </li>
                 </ul>
               </div>

@@ -37,12 +37,12 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className="nav-item dropdown dropdown-slide">
-                    <a className="nav-link dropdown-toggle" href="#">
+                    <Link to="/" className="nav-link dropdown-toggle">
                       Pages{" "}
                       <span>
                         <i className="fa fa-angle-down"></i>
                       </span>
-                    </a>
+                    </Link>
                     {/* <!-- Dropdown list --> */}
                     <div className="dropdown-menu">
                       <a className="dropdown-item" href="about-us.html">

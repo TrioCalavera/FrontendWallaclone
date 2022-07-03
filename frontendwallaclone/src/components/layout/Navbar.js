@@ -1,5 +1,10 @@
+import { useState, useEffect } from "react";
 import logo from "../../images/logo.png";
+
 const Navbar = () => {
+  const [menuBurger, setMenuBurger] = useState(false);
+  const handleMenuBurger = () => setMenuBurger(!menuBurger);
+
   return (
     <section>
       <div className="container">
@@ -12,16 +17,16 @@ const Navbar = () => {
               <button
                 className="navbar-toggler"
                 type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+                onClick={handleMenuBurger}
               >
                 <span className="navbar-toggler-icon"></span>
               </button>
               <div
-                className="collapse navbar-collapse"
+                className={
+                  menuBurger
+                    ? "collapse navbar-collapse show"
+                    : "collapse navbar-collapse"
+                }
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav ml-auto main-nav">
@@ -31,11 +36,7 @@ const Navbar = () => {
                     </a>
                   </li>
                   <li className="nav-item dropdown dropdown-slide">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      data-toggle="dropdown"
-                      href=""
-                    >
+                    <a className="nav-link dropdown-toggle" href="">
                       Dashboard
                       <span>
                         <i className="fa fa-angle-down"></i>
@@ -71,13 +72,7 @@ const Navbar = () => {
                     </div>
                   </li>
                   <li className="nav-item dropdown dropdown-slide">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="#"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
+                    <a className="nav-link dropdown-toggle" href="#">
                       Pages{" "}
                       <span>
                         <i className="fa fa-angle-down"></i>
@@ -115,13 +110,7 @@ const Navbar = () => {
                     </div>
                   </li>
                   <li className="nav-item dropdown dropdown-slide">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href=""
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
+                    <a className="nav-link dropdown-toggle" href="">
                       Listing{" "}
                       <span>
                         <i className="fa fa-angle-down"></i>

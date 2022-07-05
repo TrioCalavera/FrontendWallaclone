@@ -1,5 +1,46 @@
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Layout from "../layout/Layout";
-const LoginPage = () => {
+import {login} from "./service";
+function LoginPage() {
+
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: '',
+    remember: false,
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { email, password, remember } = credentials;
+
+  const handleChange = useCallback(event => {
+    setCredentials(credentials => ({
+      ...credentials,
+      [event.target.name]:
+        event.target.type === 'checkbox'
+          ? event.target.checked
+          : event.target.value,
+    }));
+  }, []);
+ 
+  const resetError = () => setError(null);
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    try{
+      resetError();
+      setIsLoading(true);
+      await login(credentials);
+      setIsLoading(false);
+    }catch(error){
+      setError(error);
+    }
+  }
+
+  const buttonDisabled = useMemo(() => {
+    return !email || !password || isLoading;
+  }, [email, password, isLoading]);
+
   return (
     <Layout>
       <section className="login py-5 border-top-1">
@@ -8,17 +49,23 @@ const LoginPage = () => {
             <div className="col-lg-5 col-md-8 align-item-center">
               <div className="border">
                 <h3 className="bg-gray p-4">Login Now</h3>
-                <form action="#">
+                <form action="#" onSubmit={handleSubmit}>
                   <fieldset className="p-4">
                     <input
                       type="text"
+                      name="email"
                       placeholder="Username"
                       className="border p-3 w-100 my-2"
+                      value={email}
+                      onChange={handleChange}
                     />
                     <input
                       type="password"
+                      name="password"
                       placeholder="Password"
                       className="border p-3 w-100 my-2"
+                      value={password}
+                      onChange={handleChange}
                     />
                     <div className="loggedin-forgot">
                       <input type="checkbox" id="keep-me-logged-in" />
@@ -31,7 +78,8 @@ const LoginPage = () => {
                     </div>
                     <button
                       type="submit"
-                      className="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3"
+                      className="btn py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3"
+                      disabled={buttonDisabled}
                     >
                       Log in
                     </button>

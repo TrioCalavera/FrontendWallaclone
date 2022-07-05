@@ -1,83 +1,60 @@
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../images/logo.png";
+
 const Navbar = () => {
+  const [menuBurger, setMenuBurger] = useState(false);
+  const handleMenuBurger = () => setMenuBurger(!menuBurger);
+
   return (
     <section>
       <div className="container">
         <div className="row">
           <div className="col-md-12">
             <nav className="navbar navbar-expand-lg navbar-light navigation">
-              <a className="navbar-brand" href="index.html">
+              <Link to="/" className="navbar-brand">
                 <img src={logo} alt="" />
-              </a>
+              </Link>
               <button
                 className="navbar-toggler"
                 type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
+                onClick={handleMenuBurger}
               >
                 <span className="navbar-toggler-icon"></span>
               </button>
               <div
-                className="collapse navbar-collapse"
+                className={
+                  menuBurger
+                    ? "collapse navbar-collapse show"
+                    : "collapse navbar-collapse"
+                }
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav ml-auto main-nav">
-                  <li className="nav-item active">
-                    <a className="nav-link" href="index.html">
+                  <li className="nav-item">
+                    <NavLink
+                      to="/adverts"
+                      className="nav-link"
+                      style={({ isActive }) =>
+                        isActive ? { color: "#4883ff" } : null
+                      }
+                    >
                       Home
-                    </a>
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink
+                      to="/user-profile"
+                      className="nav-link"
+                      style={({ isActive }) =>
+                        isActive ? { color: "#4883ff" } : null
+                      }
+                    >
+                      User
+                    </NavLink>
                   </li>
                   <li className="nav-item dropdown dropdown-slide">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      data-toggle="dropdown"
-                      href=""
-                    >
-                      Dashboard
-                      <span>
-                        <i className="fa fa-angle-down"></i>
-                      </span>
-                    </a>
-
-                    {/* <!-- Dropdown list --> */}
-                    <div className="dropdown-menu">
-                      <a className="dropdown-item" href="dashboard.html">
-                        Dashboard
-                      </a>
-                      <a className="dropdown-item" href="dashboard-my-ads.html">
-                        Dashboard My Ads
-                      </a>
-                      <a
-                        className="dropdown-item"
-                        href="dashboard-favourite-ads.html"
-                      >
-                        Dashboard Favourite Ads
-                      </a>
-                      <a
-                        className="dropdown-item"
-                        href="dashboard-archived-ads.html"
-                      >
-                        Dashboard Archived Ads
-                      </a>
-                      <a
-                        className="dropdown-item"
-                        href="dashboard-pending-ads.html"
-                      >
-                        Dashboard Pending Ads
-                      </a>
-                    </div>
-                  </li>
-                  <li className="nav-item dropdown dropdown-slide">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="#"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
+                    <a href="#" className="nav-link dropdown-toggle">
                       Pages{" "}
                       <span>
                         <i className="fa fa-angle-down"></i>
@@ -85,72 +62,48 @@ const Navbar = () => {
                     </a>
                     {/* <!-- Dropdown list --> */}
                     <div className="dropdown-menu">
-                      <a className="dropdown-item" href="about-us.html">
-                        About Us
-                      </a>
-                      <a className="dropdown-item" href="contact-us.html">
-                        Contact Us
-                      </a>
-                      <a className="dropdown-item" href="user-profile.html">
-                        User Profile
-                      </a>
-                      <a className="dropdown-item" href="404.html">
+                      <NavLink
+                        to="/user-profile"
+                        className="dropdown-item"
+                        style={({ isActive }) =>
+                          isActive ? { color: "#fff" } : null
+                        }
+                      >
+                        User
+                      </NavLink>
+                      <NavLink
+                        to="/404"
+                        className="dropdown-item"
+                        style={({ isActive }) =>
+                          isActive ? { color: "#fff" } : null
+                        }
+                      >
                         404 Page
-                      </a>
-                      <a className="dropdown-item" href="package.html">
-                        Package
-                      </a>
-                      <a className="dropdown-item" href="single.html">
-                        Single Page
-                      </a>
-                      <a className="dropdown-item" href="store.html">
-                        Store Single
-                      </a>
-                      <a className="dropdown-item" href="single-blog.html">
-                        Single Post
-                      </a>
-                      <a className="dropdown-item" href="blog.html">
+                      </NavLink>
+                      <Link to="/" className="dropdown-item">
+                        Test
+                      </Link>
+                      <Link to="/" className="dropdown-item">
                         Blog
-                      </a>
-                    </div>
-                  </li>
-                  <li className="nav-item dropdown dropdown-slide">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href=""
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Listing{" "}
-                      <span>
-                        <i className="fa fa-angle-down"></i>
-                      </span>
-                    </a>
-                    {/* <!-- Dropdown list --> */}
-                    <div className="dropdown-menu">
-                      <a className="dropdown-item" href="category.html">
-                        Ad-Gird View
-                      </a>
-                      <a className="dropdown-item" href="ad-listing-list.html">
-                        Ad-List View
-                      </a>
+                      </Link>
                     </div>
                   </li>
                 </ul>
                 <ul className="navbar-nav ml-auto mt-10">
                   <li className="nav-item">
-                    <a className="nav-link login-button" href="login.html">
+                    <Link to="/register" className="nav-link login-button">
                       Login
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a
-                      className="nav-link text-white add-button"
-                      href="ad-listing.html"
-                    >
-                      <i className="fa fa-plus-circle"></i> Add Listing
-                    </a>
+                    <Link to="/login" className="nav-link login-button">
+                      Register
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link text-white add-button" to="/new">
+                      <i className="fa fa-plus-circle"></i> New Ad
+                    </Link>
                   </li>
                 </ul>
               </div>

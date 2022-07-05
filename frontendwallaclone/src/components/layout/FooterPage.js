@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import phoneIcon from "../../images/phone-icon.png";
 import apple from "../../images/apple-app-store.png";
 import google from "../../images/google-play-store.png";
@@ -29,16 +30,16 @@ const FooterPage = () => {
               <h4>Site Pages</h4>
               <ul>
                 <li>
-                  <a href="#">Boston</a>
+                  <Link to="/">Boston</Link>
                 </li>
                 <li>
-                  <a href="#">How It works</a>
+                  <Link to="/">How It works</Link>
                 </li>
                 <li>
-                  <a href="#">Deals & Coupons</a>
+                  <Link to="/">Deals & Coupons</Link>
                 </li>
                 <li>
-                  <a href="#">Articls & Tips</a>
+                  <Link to="/">Articls & Tips</Link>
                 </li>
                 <li>
                   <a href="terms-condition.html">Terms & Conditions</a>
@@ -52,19 +53,19 @@ const FooterPage = () => {
               <h4>Admin Pages</h4>
               <ul>
                 <li>
-                  <a href="category.html">Category</a>
+                  <Link to="/">Category</Link>
                 </li>
                 <li>
-                  <a href="single.html">Single Page</a>
+                  <Link to="/">Single Page</Link>
                 </li>
                 <li>
-                  <a href="store.html">Store Single</a>
+                  <Link to="/">Store Single</Link>
                 </li>
                 <li>
-                  <a href="single-blog.html">Single Post</a>
+                  <Link to="/">Single Post</Link>
                 </li>
                 <li>
-                  <a href="blog.html">Blog</a>
+                  <Link to="/">Blog</Link>
                 </li>
               </ul>
             </div>
@@ -74,19 +75,19 @@ const FooterPage = () => {
             {/* <!-- App promotion --> */}
             <div className="block-2 app-promotion">
               <div className="mobile d-flex">
-                <a href="">
+                <Link to="/">
                   {/* <!-- Icon --> */}
                   <img src={phoneIcon} alt="mobile-icon" />
-                </a>
+                </Link>
                 <p>Get the Dealsy Mobile App and Save more</p>
               </div>
               <div className="download-btn d-flex my-3">
-                <a href="#">
+                <Link to="/">
                   <img src={google} className="img-fluid" alt="" />
-                </a>
-                <a href="#" className="ml-3">
+                </Link>
+                <Link to="/" className="ml-3">
                   <img src={apple} className="img-fluid" alt="" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

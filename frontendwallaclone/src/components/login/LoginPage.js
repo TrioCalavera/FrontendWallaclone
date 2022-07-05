@@ -42,7 +42,7 @@ function LoginPage() {
   }, [email, password, isLoading]);
 
   return (
-    <Layout>
+    <LayoutWithoutBanner>
       <section className="login py-5 border-top-1">
         <div className="container">
           <div className="row justify-content-center">
@@ -99,7 +99,7 @@ function LoginPage() {
           </div>
         </div>
       </section>
-    </Layout>
+    </LayoutWithoutBanner>
   );
 };
 

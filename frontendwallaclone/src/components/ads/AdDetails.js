@@ -1,11 +1,13 @@
-import Layout from "../layout/Layout";
+import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
+import { Link } from "react-router-dom";
+import "./css/adDetails.css";
 
 import Product1 from "../../images/products-1.jpg";
 import userThumb from "../../images/user-gray.png";
 
 const AdDetails = () => {
   return (
-    <Layout>
+    <LayoutWithoutBanner>
       <section className="section bg-gray">
         {/* <!-- Container Start --> */}
         <div className="container">
@@ -19,25 +21,18 @@ const AdDetails = () => {
                 <div className="product-meta">
                   <ul className="list-inline">
                     <li className="list-inline-item">
-                      <i className="fa fa-user-o"></i> By <a href="">Andrew</a>
+                      <i className="fa fa-user-o"></i> By{" "}
+                      <strong>Pepe Bigote</strong>
                     </li>
                     <li className="list-inline-item">
-                      <i className="fa fa-folder-open-o"></i> Category
-                      <a href="">Electronics</a>
-                    </li>
-                    <li className="list-inline-item">
-                      <i className="fa fa-location-arrow"></i> Location
-                      <a href="">Dhaka Bangladesh</a>
+                      <i className="fa fa-folder-open-o"></i> Category{" "}
+                      <strong>Electronics</strong>
                     </li>
                   </ul>
                 </div>
-
                 {/* <!-- product slider --> */}
                 <div className="product-slider">
-                  <div
-                    className="product-slider-item my-4"
-                    data-image={Product1}
-                  >
+                  <div className="product-slider-item" data-image={Product1}>
                     <img
                       className="img-fluid w-100"
                       src={Product1}
@@ -46,8 +41,7 @@ const AdDetails = () => {
                   </div>
                 </div>
                 {/* <!-- product slider --> */}
-
-                <div className="content">
+                <div className="content compess">
                   <div className="tab-content" id="pills-tabContent">
                     <div
                       className="tab-pane fade show active"
@@ -91,26 +85,26 @@ const AdDetails = () => {
                     alt=""
                   />
                   <h4>
-                    <a href="">Jonathon Andrew</a>
+                    <Link to="/">Jonathon Andrew</Link>
                   </h4>
                   <p className="member-time">Member Since Jun 27, 2017</p>
-                  <a href="">See all ads</a>
+                  <Link to="/">See all ads</Link>
                   <ul className="list-inline mt-20">
                     <li className="list-inline-item">
-                      <a
-                        href=""
+                      <Link
+                        to="/"
                         className="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3"
                       >
                         Contact
-                      </a>
+                      </Link>
                     </li>
                     <li className="list-inline-item">
-                      <a
-                        href=""
+                      <Link
+                        to="/"
                         className="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3"
                       >
                         Make an offer
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -120,7 +114,7 @@ const AdDetails = () => {
         </div>
         {/* <!-- Container End --> */}
       </section>
-    </Layout>
+    </LayoutWithoutBanner>
   );
 };
 

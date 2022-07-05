@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Subfooter = () => {
   return (
     <footer className="footer-bottom">
@@ -10,14 +11,9 @@ const Subfooter = () => {
               <p>
                 Copyright © {new Date().getFullYear()}. All Rights Reserved,
                 theme by
-                <a
-                  className="text-primary"
-                  href="/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <Link className="text-primary" to="/">
                   &nbsp; Cuarteto Calavera
-                </a>
+                </Link>
               </p>
             </div>
           </div>
@@ -25,31 +21,16 @@ const Subfooter = () => {
             {/* <!-- Social Icons --> */}
             <ul className="social-media-icons text-right">
               <li>
-                <a
-                  className="fa fa-facebook"
-                  href="https://www.facebook.com/themefisher"
-                  target="_blank"
-                  rel="noreferrer"
-                ></a>
+                <Link to="/" className="fa fa-facebook"></Link>
               </li>
               <li>
-                <a
-                  className="fa fa-twitter"
-                  href="https://www.twitter.com/themefisher"
-                  target="_blank"
-                  rel="noreferrer"
-                ></a>
+                <Link to="/" className="fa fa-twitter"></Link>
               </li>
               <li>
-                <a
-                  className="fa fa-pinterest-p"
-                  href="https://www.pinterest.com/themefisher"
-                  target="_blank"
-                  rel="noreferrer"
-                ></a>
+                <Link to="/" className="fa fa-pinterest-p"></Link>
               </li>
               <li>
-                <a className="fa fa-vimeo" href=""></a>
+                <Link to="/" className="fa fa-vimeo"></Link>
               </li>
             </ul>
           </div>

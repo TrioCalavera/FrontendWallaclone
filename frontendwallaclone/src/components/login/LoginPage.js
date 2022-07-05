@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import Layout from "../layout/Layout";
-import {login} from "./service";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
+import { login } from "./service";
 function LoginPage() {
-
   const [credentials, setCredentials] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     remember: false,
   });
 
@@ -13,29 +12,29 @@ function LoginPage() {
   const [error, setError] = useState(null);
   const { email, password, remember } = credentials;
 
-  const handleChange = useCallback(event => {
-    setCredentials(credentials => ({
+  const handleChange = useCallback((event) => {
+    setCredentials((credentials) => ({
       ...credentials,
       [event.target.name]:
-        event.target.type === 'checkbox'
+        event.target.type === "checkbox"
           ? event.target.checked
           : event.target.value,
     }));
   }, []);
- 
+
   const resetError = () => setError(null);
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    try{
+    try {
       resetError();
       setIsLoading(true);
       await login(credentials);
       setIsLoading(false);
-    }catch(error){
+    } catch (error) {
       setError(error);
     }
-  }
+  };
 
   const buttonDisabled = useMemo(() => {
     return !email || !password || isLoading;
@@ -101,6 +100,6 @@ function LoginPage() {
       </section>
     </LayoutWithoutBanner>
   );
-};
+}
 
 export default LoginPage;

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
+import { Link } from "react-router-dom";
 import { login } from "./service";
 function LoginPage() {
   const [credentials, setCredentials] = useState({
@@ -85,12 +86,12 @@ function LoginPage() {
                     <a className="mt-3 d-block  text-primary" href="#">
                       Forget Password?
                     </a>
-                    <a
+                    <Link
                       className="mt-3 d-inline-block text-primary"
-                      href="register.html"
+                      to="/register"
                     >
                       Register Now
-                    </a>
+                    </Link>
                   </fieldset>
                 </form>
               </div>

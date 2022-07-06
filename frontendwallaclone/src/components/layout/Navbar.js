@@ -91,12 +91,12 @@ const Navbar = () => {
                 </ul>
                 <ul className="navbar-nav ml-auto mt-10">
                   <li className="nav-item">
-                    <Link to="/register" className="nav-link login-button">
+                    <Link to="/login" className="nav-link login-button">
                       Login
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/login" className="nav-link login-button">
+                    <Link to="/register" className="nav-link login-button">
                       Register
                     </Link>
                   </li>

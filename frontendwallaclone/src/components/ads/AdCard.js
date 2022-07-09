@@ -11,7 +11,7 @@ const AdCard = ({ ad }) => {
               <div className="price">{ad.price} €</div>
               <img
                 className="card-img-top img-fluid"
-                src={product}
+                src={ad.image || product}
                 alt="Card cap"
               />
             </div>

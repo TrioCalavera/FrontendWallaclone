@@ -1,6 +1,18 @@
+import { useState, useEffect } from "react";
 import Layout from "../layout/Layout";
 import AdCard from "./AdCard";
+import { getLatestAds } from "../../api/service";
+
 const AdsContent = () => {
+  const [ads, setAds] = useState([]);
+  useEffect(() => {
+    const execute = async () => {
+      const ads = await getLatestAds();
+      setAds(ads.result);
+    };
+    execute();
+    return () => {};
+  }, []);
   return (
     <Layout>
       <section className="popular-deals section bg-gray">
@@ -18,7 +30,9 @@ const AdsContent = () => {
           </div>
           {/* Productos */}
           <div className="trending-ads-slide row">
-            <AdCard />
+            {ads.map((ad, index) => (
+              <AdCard ad={ad} key={index} />
+            ))}
           </div>
         </div>
       </section>

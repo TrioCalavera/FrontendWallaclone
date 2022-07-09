@@ -1,3 +1,7 @@
 .content.compess {
   margin-top: -1rem;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}

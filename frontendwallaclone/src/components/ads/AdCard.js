@@ -7,7 +7,7 @@ const AdCard = ({ ad }) => {
         <div className="product-item bg-light">
           <div className="card">
             <div className="thumb-content">
-              <div className="price">{ad.price}</div>
+              <div className="price">{ad.price} €</div>
               <img
                 className="card-img-top img-fluid"
                 src={product}
@@ -15,23 +15,22 @@ const AdCard = ({ ad }) => {
               />
             </div>
             <div className="card-body">
-              <h4 className="card-title">{ad.name}</h4>
+              <h4 className="card-title uppercase">{ad.name}</h4>
               <ul className="list-inline product-meta">
-                <li className="list-inline-item">
+                <li className="list-block-item">
                   <i className="fa fa-folder-open-o mr-2"></i>
                   {ad.tags.map((tag, index) => (
-                    <strong key={index}>{tag}</strong>
+                    <strong className="mr-2" key={index}>
+                      {tag}
+                    </strong>
                   ))}
                 </li>
-                <li className="list-inline-item">
+                <li className="list-block-item">
                   <i className="fa fa-calendar mr-2"></i>
-                  <strong>26th December</strong>
+                  <strong>{ad.create}</strong>
                 </li>
               </ul>
-              <p className="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Explicabo, aliquam!
-              </p>
+              <p className="card-text">{ad.description}</p>
               <div className="product-ratings">
                 <ul className="list-inline">
                   <li className="list-inline-item selected">

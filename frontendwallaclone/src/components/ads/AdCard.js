@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import product from "../../images/products-1.jpg";
+import timeConfig from "../../utils/timeConfig";
 const AdCard = ({ ad }) => {
   return (
     <div className="col-sm-12 col-lg-4">
@@ -27,7 +28,11 @@ const AdCard = ({ ad }) => {
                 </li>
                 <li className="list-block-item">
                   <i className="fa fa-calendar mr-2"></i>
-                  <strong>{ad.create}</strong>
+                  <strong>
+                    {new Intl.DateTimeFormat("default", timeConfig).format(
+                      ad.create
+                    )}
+                  </strong>
                 </li>
               </ul>
               <p className="card-text">{ad.description}</p>

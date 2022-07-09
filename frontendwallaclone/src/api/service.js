@@ -1,11 +1,11 @@
-import client from "../../api/client";
+import client from "./client";
 
 // CUANDO BACK TENGA LAS RUTAS ESPECIFICARLAS
 const adsBaseUrl = "/api";
 
 // Lastes Ads
 export const getLatestAds = () => {
-  const url = `${adsBaseUrl}/v1/adverts`;
+  const url = `/adverts`;
   return client.get(url);
 };
 

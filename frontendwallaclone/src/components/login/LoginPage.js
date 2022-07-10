@@ -2,6 +2,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import { Link } from "react-router-dom";
 import { login } from "./service";
+import Spinner from "../elements/spinner/Spinner";
+
 function LoginPage() {
   const [credentials, setCredentials] = useState({
     email: "",
@@ -34,6 +36,7 @@ function LoginPage() {
       setIsLoading(false);
     } catch (error) {
       setError(error);
+      setIsLoading(false);
     }
   };
 
@@ -83,13 +86,10 @@ function LoginPage() {
                     >
                       Log in
                     </button>
-                    <a className="mt-3 d-block  text-primary" href="#">
+                    {/* <Link to="/login" className="mt-3 d-block text-primary">
                       Forget Password?
-                    </a>
-                    <Link
-                      className="mt-3 d-inline-block text-primary"
-                      to="/register"
-                    >
+                    </Link> */}
+                    <Link className="mt-3 d-block text-primary" to="/register">
                       Register Now
                     </Link>
                   </fieldset>
@@ -99,6 +99,7 @@ function LoginPage() {
           </div>
         </div>
       </section>
+      {isLoading && <Spinner />}
     </LayoutWithoutBanner>
   );
 }

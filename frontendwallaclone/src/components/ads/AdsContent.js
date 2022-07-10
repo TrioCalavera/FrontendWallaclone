@@ -3,13 +3,21 @@ import Layout from "../layout/Layout";
 import AdCard from "./AdCard";
 import { getLatestAds } from "../../api/service";
 import EmptyListAds from "../elements/EmptyList/EmptyListAds";
+import Spinner from "../elements/spinner/Spinner";
 
 const AdsContent = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [ads, setAds] = useState([]);
   useEffect(() => {
     const execute = async () => {
-      const ads = await getLatestAds();
-      setAds(ads.result);
+      try {
+        setIsLoading(true);
+        const ads = await getLatestAds();
+        setAds(ads.result);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+      }
     };
     execute();
     return () => {};
@@ -39,6 +47,7 @@ const AdsContent = () => {
           </div>
         </div>
       </section>
+      {isLoading && <Spinner />}
     </Layout>
   );
 };

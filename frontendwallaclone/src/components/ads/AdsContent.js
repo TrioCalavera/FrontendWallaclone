@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Layout from "../layout/Layout";
 import AdCard from "./AdCard";
 import { getLatestAds } from "../../api/service";
+import EmptyListAds from "../elements/EmptyList/EmptyListAds";
 
 const AdsContent = () => {
   const [ads, setAds] = useState([]);
@@ -30,9 +31,11 @@ const AdsContent = () => {
           </div>
           {/* Productos */}
           <div className="trending-ads-slide row">
-            {ads.map((ad, index) => (
-              <AdCard ad={ad} key={index} />
-            ))}
+            {!ads.length ? (
+              <EmptyListAds />
+            ) : (
+              ads.map((ad, index) => <AdCard ad={ad} key={index} />)
+            )}
           </div>
         </div>
       </section>

@@ -1,23 +1,23 @@
 import client from "./client";
 
 // CUANDO BACK TENGA LAS RUTAS ESPECIFICARLAS
-const adsBaseUrl = "/api";
+const adsBaseUrl = "/api/v1";
 
 // Lastes Ads
 export const getLatestAds = () => {
-  const url = `/adverts`;
+  const url = `/api/v1/adverts`;
   return client.get(url);
 };
 
 // Tags
 export const getTags = () => {
-  const url = `${adsBaseUrl}/v1/adverts/tags`;
+  const url = `${adsBaseUrl}/api/v1/adverts/tags`;
   return client.get(url);
 };
 
 // Create Ads
 export const setAdverts = () => {
-  const url = `${adsBaseUrl}/v1/adverts`;
+  const url = `${adsBaseUrl}/api/v1/adverts`;
   return client.post(url);
 };
 

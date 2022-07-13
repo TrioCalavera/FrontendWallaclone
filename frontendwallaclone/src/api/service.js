@@ -5,7 +5,7 @@ const adsBaseUrl = "/api";
 
 // Lastes Ads
 export const getLatestAds = () => {
-  const url = `/adverts`;
+  const url = `${adsBaseUrl}/v1/adverts`;
   return client.get(url);
 };
 

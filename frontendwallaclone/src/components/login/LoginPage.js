@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { login } from "./service";
 import Spinner from "../elements/spinner/Spinner";
 
 function LoginPage() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -32,7 +34,10 @@ function LoginPage() {
     try {
       resetError();
       setIsLoading(true);
-      await login(credentials);
+      await login(credentials).then(() => {
+        const from = location.state?.from?.pathname || '/';
+        navigate(from, { replace: true });
+      });
       setIsLoading(false);
     } catch (error) {
       setError(error);
@@ -71,7 +76,11 @@ function LoginPage() {
                       onChange={handleChange}
                     />
                     <div className="loggedin-forgot">
-                      <input type="checkbox" id="keep-me-logged-in" />
+                      <input type="checkbox" 
+                      id="keep-me-logged-in"
+                      name="remember"
+                      checked={remember}
+                      onChange={handleChange}/>
                       <label
                         htmlFor="keep-me-logged-in"
                         className="pt-3 pb-2 ml-2"
@@ -81,7 +90,7 @@ function LoginPage() {
                     </div>
                     <button
                       type="submit"
-                      className="btn py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3"
+                      className="btn py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3"                      
                       disabled={buttonDisabled}
                     >
                       Log in

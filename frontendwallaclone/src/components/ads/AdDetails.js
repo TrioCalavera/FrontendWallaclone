@@ -4,6 +4,8 @@ import "./css/adDetails.css";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAd } from "../../api/service";
+import Modal from "../elements/modal/Modal";
+import Spinner from "../elements/spinner/Spinner";
 
 import Product1 from "../../images/products-1.jpg";
 import userThumb from "../../images/user-gray.png";
@@ -14,12 +16,27 @@ const AdDetails = () => {
   //Revisar pq lo tengo que hacer así... Object.values
   const adId = Object.values(useParams());
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [modal, setModal] = useState(false);
+  const handleModalVisible = () => setModal(true);
+  const handleModalHidden = () => setModal(false);
+
   useEffect(() => {
-    getAd(adId[0]).then((adDetail) => setAdDetail(adDetail.result));
+    try {
+      setIsLoading(true);
+      getAd(adId[0]).then((adDetail) => setAdDetail(adDetail.result));
+      setIsLoading(false);
+    } catch (error) {
+      console.log("error", error);
+      setIsLoading(false);
+    }
   }, []);
 
   return (
     <LayoutWithoutBanner>
+      {modal && <Modal handleModalHidden={handleModalHidden} />}
+
       {!adDetail ? (
         <EmptyAd />
       ) : (
@@ -91,7 +108,7 @@ const AdDetails = () => {
                     <p className="member-time">Member Since Jun 27, 2017</p>
                     <Link to="/">See all ads</Link>
                     <ul className="list-inline mt-20">
-                      <li className="list-inline-item">
+                      <li className="list-block-item">
                         <Link
                           to="/"
                           className="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3"
@@ -99,12 +116,21 @@ const AdDetails = () => {
                           Contact
                         </Link>
                       </li>
-                      <li className="list-inline-item">
+                      <li className="list-block-item">
                         <Link
                           to="/"
                           className="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3"
                         >
                           Make an offer
+                        </Link>
+                      </li>
+                      <li className="list-block-item">
+                        <Link
+                          to="#"
+                          className="btn btn-offer d-inline-block btn-danger ml-n1 my-1 px-lg-4 px-md-3"
+                          onClick={handleModalVisible}
+                        >
+                          Delete Ad
                         </Link>
                       </li>
                     </ul>

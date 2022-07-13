@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 // import Layout from "./components/layout/Layout";
 import ScrollTop from "./components/elements/scrollTo/ScrollTop";
 import LoginPage from "./components/login/LoginPage";
@@ -10,6 +11,7 @@ import AdNew from "./components/ads/AdNew";
 import UserProfile from "./components/user/UserProfile";
 
 function App() {
+  const { t } = useTranslation();
   return (
     <div className="App">
       <ScrollTop />

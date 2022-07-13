@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 // import Layout from "./components/layout/Layout";
 import ScrollTop from "./components/elements/scrollTo/ScrollTop";
@@ -11,9 +12,24 @@ import AdNew from "./components/ads/AdNew";
 import UserProfile from "./components/user/UserProfile";
 
 function App() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [language, setLenguage] = useState('es');
+ 
+  const onChangeLanguage = () => {
+    i18n.changeLanguage({ language });
+    if (language === 'es') {
+      setLenguage('en');
+    } else {
+      setLenguage('es');
+    }
+  
+
+  };
   return (
     <div className="App">
+      <button onClick={onChangeLanguage}>
+        {t('home.button.text')}
+      </button>
       <ScrollTop />
       <Routes>
         {/* Rutas generales */}
@@ -33,6 +49,7 @@ function App() {
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
       {/* <Layout /> */}
+      
     </div>
   );
 }

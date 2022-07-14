@@ -1,13 +1,24 @@
+import { useState, useEffect } from "react";
 import Searcher from "./Searcher";
 import { Link } from "react-router-dom";
+import { getTags } from "../../api/service";
 
 const HeaderPage = () => {
+  const [tags, setTags] = useState([]);
+
+  useEffect(() => {
+    const execute = async () => {
+      const tags = await getTags().catch();
+      setTags(tags);
+    };
+    execute();
+  }, []);
+
   return (
     <section className="hero-area bg-1 text-center overly">
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            {/* <!-- Header Contetnt --> */}
             <div className="content-block">
               <h1>Buy & Sell Near You</h1>
               <p>
@@ -17,31 +28,13 @@ const HeaderPage = () => {
               <div className="short-popular-category-list text-center">
                 <h2>Popular Category</h2>
                 <ul className="list-inline">
-                  <li className="list-inline-item">
-                    <Link to="/">
-                      <i className="fa fa-briefcase"></i> Work
-                    </Link>
-                  </li>
-                  <li className="list-inline-item">
-                    <Link to="/">
-                      <i className="fa fa-heart"></i> Lifestyle
-                    </Link>
-                  </li>
-                  <li className="list-inline-item">
-                    <Link to="/">
-                      <i className="fa fa-mobile"></i> Mobile
-                    </Link>
-                  </li>
-                  <li className="list-inline-item">
-                    <Link to="/">
-                      <i className="fa fa-car"></i> Motor
-                    </Link>
-                  </li>
-                  <li className="list-inline-item">
-                    <Link to="/">
-                      <i className="fa fa-coffee"></i> IT
-                    </Link>
-                  </li>
+                  {tags.map((tag, index) => (
+                    <li className="list-inline-item" key={index}>
+                      <Link to="/">
+                        <i className={tag.icon}></i> {tag.name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

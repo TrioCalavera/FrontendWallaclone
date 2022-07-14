@@ -31,16 +31,16 @@ const Modal = ({ handleModalHidden }) => {
   return (
     <div className="modal-confirm">
       <div className="modal-confirm__content">
-        <p>Are you sure you want to delete this ad?</p>
-        <div>
+        <p>Are you sure you want to delete it?</p>
+        <div className="text-center">
           <button
-            className="btn btn-danger px-lg-4 px-md-3"
+            className="btn btn-danger px-lg-4 px-md-3 mb-2"
             onClick={handleDeleteAd}
           >
             Delete
           </button>
           <button
-            className="btn btn-primary px-lg-4 px-md-3"
+            className="btn btn-primary px-lg-4 px-md-3 mb-2"
             onClick={handleModalHidden}
           >
             Close Modal

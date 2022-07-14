@@ -5,9 +5,10 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAd } from "../../api/service";
 import Modal from "../elements/modal/Modal";
+import NotFound from "../layout/NotFound";
 import Spinner from "../elements/spinner/Spinner";
 
-import Product1 from "../../images/products-1.jpg";
+import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
 
 const AdDetails = () => {
@@ -38,7 +39,7 @@ const AdDetails = () => {
       {modal && <Modal handleModalHidden={handleModalHidden} />}
 
       {!adDetail ? (
-        <EmptyAd />
+        <NotFound />
       ) : (
         <section className="section bg-gray">
           <div className="container">
@@ -67,10 +68,10 @@ const AdDetails = () => {
                     </ul>
                   </div>
                   <div className="product-slider">
-                    <div className="product-slider-item" data-image={Product1}>
+                    <div className="product-slider-item p-4 mx-auto">
                       <img
                         className="img-fluid w-100"
-                        src={Product1}
+                        src={adDetail.image || noImage}
                         alt="product-img"
                       />
                     </div>

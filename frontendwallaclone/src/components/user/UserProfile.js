@@ -48,7 +48,7 @@ const UserProfile = () => {
                     <form action="#">
                       {/* <!-- First Name --> */}
                       <div className="form-group">
-                        <label for="first-name">First Name</label>
+                        <label htmlFor="first-name">First Name</label>
                         <input
                           type="text"
                           className="form-control"
@@ -57,7 +57,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- Last Name --> */}
                       <div className="form-group">
-                        <label for="last-name">Last Name</label>
+                        <label htmlFor="last-name">Last Name</label>
                         <input
                           type="text"
                           className="form-control"
@@ -75,7 +75,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- Comunity Name --> */}
                       <div className="form-group">
-                        <label for="comunity-name">Comunity Name</label>
+                        <label htmlFor="comunity-name">Comunity Name</label>
                         <input
                           type="text"
                           className="form-control"
@@ -84,7 +84,10 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- Checkbox --> */}
                       <div className="form-check">
-                        <label className="form-check-label" for="hide-profile">
+                        <label
+                          className="form-check-label"
+                          htmlFor="hide-profile"
+                        >
                           <input
                             className="form-check-input mt-1"
                             type="checkbox"
@@ -96,7 +99,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- Zip Code --> */}
                       <div className="form-group">
-                        <label for="zip-code">Zip Code</label>
+                        <label htmlFor="zip-code">Zip Code</label>
                         <input
                           type="text"
                           className="form-control"
@@ -117,7 +120,9 @@ const UserProfile = () => {
                     <form action="#">
                       {/* <!-- Current Password --> */}
                       <div className="form-group">
-                        <label for="current-password">Current Password</label>
+                        <label htmlFor="current-password">
+                          Current Password
+                        </label>
                         <input
                           type="password"
                           className="form-control"
@@ -126,7 +131,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- New Password --> */}
                       <div className="form-group">
-                        <label for="new-password">New Password</label>
+                        <label htmlFor="new-password">New Password</label>
                         <input
                           type="password"
                           className="form-control"
@@ -135,7 +140,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- Confirm New Password --> */}
                       <div className="form-group">
-                        <label for="confirm-password">
+                        <label htmlFor="confirm-password">
                           Confirm New Password
                         </label>
                         <input
@@ -158,7 +163,7 @@ const UserProfile = () => {
                     <form action="#">
                       {/* <!-- Current Password --> */}
                       <div className="form-group">
-                        <label for="current-email">Current Email</label>
+                        <label htmlFor="current-email">Current Email</label>
                         <input
                           type="email"
                           className="form-control"
@@ -167,7 +172,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- New email --> */}
                       <div className="form-group">
-                        <label for="new-email">New email</label>
+                        <label htmlFor="new-email">New email</label>
                         <input
                           type="email"
                           className="form-control"

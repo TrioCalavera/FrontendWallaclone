@@ -23,7 +23,7 @@ export const getTags = () => {
 
 // Create Ads
 export const setAdverts = () => {
-  const url = `${adsBaseUrl}/v1/adverts`;
+  const url = `${adsBaseUrl}/adverts`;
   return client.post(url);
 };
 

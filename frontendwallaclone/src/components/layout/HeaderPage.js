@@ -8,7 +8,7 @@ const HeaderPage = () => {
 
   useEffect(() => {
     const execute = async () => {
-      const tags = await getTags().catch();
+      const tags = await getTags();
       setTags(tags);
     };
     execute();

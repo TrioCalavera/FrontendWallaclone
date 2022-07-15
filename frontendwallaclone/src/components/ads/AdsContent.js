@@ -10,14 +10,10 @@ const AdsContent = () => {
   const [ads, setAds] = useState([]);
   useEffect(() => {
     const execute = async () => {
-      try {
-        setIsLoading(true);
-        const ads = await getLatestAds();
-        setAds(ads.result);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-      }
+      setIsLoading(true);
+      const ads = await getLatestAds();
+      setAds(ads.result);
+      setIsLoading(false);
     };
     execute();
     return () => {};

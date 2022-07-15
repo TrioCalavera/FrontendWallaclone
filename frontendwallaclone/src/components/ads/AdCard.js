@@ -4,7 +4,7 @@ import timeConfig from "../../utils/timeConfig";
 const AdCard = ({ ad }) => {
   return (
     <div className="col-sm-12 col-lg-4">
-      <Link to="/adverts/:adsId">
+      <Link to={`/adverts/${ad._id}`}>
         <div className="product-item bg-light">
           <div className="card">
             <div className="thumb-content">
@@ -36,24 +36,27 @@ const AdCard = ({ ad }) => {
                 </li>
               </ul>
               <p className="card-text">{ad.description}</p>
-              <div className="product-ratings">
-                <ul className="list-inline">
-                  <li className="list-inline-item selected">
-                    <i className="fa fa-star"></i>
-                  </li>
-                  <li className="list-inline-item selected">
-                    <i className="fa fa-star"></i>
-                  </li>
-                  <li className="list-inline-item selected">
-                    <i className="fa fa-star"></i>
-                  </li>
-                  <li className="list-inline-item selected">
-                    <i className="fa fa-star"></i>
-                  </li>
-                  <li className="list-inline-item">
-                    <i className="fa fa-star"></i>
-                  </li>
-                </ul>
+              <div className="flex-center-center">
+                <div className="product-ratings">
+                  <ul className="list-inline">
+                    <li className="list-inline-item selected">
+                      <i className="fa fa-star"></i>
+                    </li>
+                    <li className="list-inline-item selected">
+                      <i className="fa fa-star"></i>
+                    </li>
+                    <li className="list-inline-item selected">
+                      <i className="fa fa-star"></i>
+                    </li>
+                    <li className="list-inline-item selected">
+                      <i className="fa fa-star"></i>
+                    </li>
+                    <li className="list-inline-item">
+                      <i className="fa fa-star"></i>
+                    </li>
+                  </ul>
+                </div>
+                <strong>{ad.sale ? "Sale" : "Buy"}</strong>
               </div>
             </div>
           </div>

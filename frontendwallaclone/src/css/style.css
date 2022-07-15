@@ -1501,6 +1501,7 @@ ul.pagination .active a {
 
 .product-item .thumb-content {
   position: relative;
+  padding: 2rem;
 }
 
 .product-item .thumb-content .price {
@@ -2728,4 +2729,29 @@ form textarea {
 .social-media-icons li a:hover {
   color: #fff !important;
   text-decoration: none;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.flex-center-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.space {
+  height: calc(100vh - 589px);
+  min-height: 30vh;
+}
+
+@media (min-width: 1200px) {
+  .space {
+    height: calc(100vh - 563px);
+  }
+}
+@media (max-width: 1200px) {
+  .space {
+    height: calc(100vh - 563px);
+  }
 }

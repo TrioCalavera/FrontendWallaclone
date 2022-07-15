@@ -71,7 +71,10 @@ const AdDetails = () => {
                     <div className="product-slider-item p-4 mx-auto">
                       <img
                         className="img-fluid w-100"
-                        src={adDetail.image || noImage}
+                        src={
+                          process.env.REACT_APP_API_BASE_URL + adDetail.image ||
+                          noImage
+                        }
                         alt="product-img"
                       />
                     </div>

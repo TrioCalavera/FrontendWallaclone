@@ -1,4 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import React, { useState } from "react";
+
 // import Layout from "./components/layout/Layout";
 import ScrollTop from "./components/elements/scrollTo/ScrollTop";
 import LoginPage from "./components/login/LoginPage";
@@ -8,7 +10,7 @@ import AdDetails from "./components/ads/AdDetails";
 import NotFound from "./components/layout/NotFound";
 import AdNew from "./components/ads/AdNew";
 import UserProfile from "./components/user/UserProfile";
-import RequireAuth from "./components/requireAuth/RequireAuth"
+import RequireAuth from "./components/requireAuth/RequireAuth";
 
 function App() {
   return (
@@ -21,12 +23,10 @@ function App() {
         <Route path="/adverts/:adsId" element={<AdDetails />} />
 
         {/* Hay que proteger RUTAS. NO OLVIDAR!! */}
-        
-          {/*<Route path="/new"  element={<RequireAuth> <AdNew /> </RequireAuth>} />*/}
-          <Route path="/new"  element={ <AdNew /> } />
-          <Route path="/user-profile" element={<UserProfile />} />
-        
-        
+
+        {/*<Route path="/new"  element={<RequireAuth> <AdNew /> </RequireAuth>} />*/}
+        <Route path="/new" element={<AdNew />} />
+        <Route path="/user-profile" element={<UserProfile />} />
 
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

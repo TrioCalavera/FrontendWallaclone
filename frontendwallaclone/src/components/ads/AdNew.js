@@ -1,5 +1,9 @@
+import { useTranslation } from "react-i18next";
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
+
 const AdNew = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <LayoutWithoutBanner>
       <section className="section">
@@ -7,13 +11,9 @@ const AdNew = () => {
           <div className="row">
             <div className="col-md-6">
               <div className="contact-us-content p-4">
-                <h5>New Advert</h5>
-                <h1 className="pt-3">Hello, what's on your mind?</h1>
-                <p className="pt-3 pb-5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                  elit dolor, blandit vel euismod ac, lentesque et dolor. Ut id
-                  tempus ipsum.
-                </p>
+                <h5>{t("newadvert.new_advert")}</h5>
+                <h1 className="pt-3">{t("newadvert.on_your_mind")}</h1>
+                <p className="pt-3 pb-5">{t("newadvert.subtitle")}</p>
               </div>
             </div>
             <div className="col-md-6">
@@ -24,7 +24,7 @@ const AdNew = () => {
                       <div className="col-lg-6 py-2">
                         <input
                           type="text"
-                          placeholder="Name *"
+                          placeholder={t("newadvert.name")}
                           className="form-control"
                           required
                         />
@@ -32,7 +32,7 @@ const AdNew = () => {
                       <div className="col-lg-6 pt-2">
                         <input
                           type="text"
-                          placeholder="Price *"
+                          placeholder={t("newadvert.price")}
                           className="form-control"
                           required
                         />
@@ -40,7 +40,7 @@ const AdNew = () => {
                     </div>
                   </div>
                   <select name="" id="" className="form-control w-100">
-                    <option value="1">Select Category</option>
+                    <option value="1">{t("newadvert.select_category")}</option>
                     <option value="1">Work</option>
                     <option value="1">Lifestyle</option>
                     <option value="1">Mobile</option>
@@ -59,15 +59,15 @@ const AdNew = () => {
                   <textarea
                     name="description"
                     id=""
-                    placeholder="Description *"
+                    placeholder={t("newadvert.description")}
                     className="border w-100 p-3 mt-3 mt-lg-4"
                   ></textarea>
                   <div className="btn-grounp">
                     <button
                       type="submit"
-                      className="btn btn-primary mt-2 float-right"
+                      className="btn btn-primary mt-2 float-right uppercase"
                     >
-                      SUBMIT
+                      {t("newadvert.submit")}
                     </button>
                   </div>
                 </fieldset>

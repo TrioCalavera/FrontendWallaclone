@@ -14,5 +14,15 @@
         "buyAndSell": "Buy & Sell Near You",
         "popular_category": "Popular Category",
         "subtitle": "Join the millions who buy and sell from each other everyday in local communities around the world"
+    },
+    "newadvert": {
+        "new_advert": "New Advert",
+        "on_your_mind": "Hello, what´s on your mind?",
+        "subtitle": "Add those items you want to buy or sell, price them, put them in one or more categories, tell an attractive story and you'll see how successful you are! You'll see how easy it is.",
+        "name": "Name *",
+        "price": "Price *",
+        "select_category": "Select Category",
+        "description": "Description *",
+        "submit": "Submit"
     }
 }

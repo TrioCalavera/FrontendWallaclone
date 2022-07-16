@@ -1,26 +1,15 @@
-import React from 'react';
-import T from 'prop-types';
+import { createContext, useContext } from 'react';
 
-const AuthContext = React.createContext();
+const AuthContext = createContext();
 
-export const useAuthContext = () => {
-  const authValue = React.useContext(AuthContext);
-  return authValue;
-};
+export const AuthContextProvider = AuthContext.Provider;
+export const AuthContextConsumer = AuthContext.Consumer;
 
-export const AuthProvider = ({ children, ...props }) => (
-  <AuthContext.Provider value={props}>{children}</AuthContext.Provider>
-);
-
-export const AuthConsumer = AuthContext.Consumer;
-
-AuthProvider.propTypes = {
-  children: T.node,
-};
-
-AuthProvider.defaultProps = {
-  children: null,
-};
+export function useAuth() {
+  const auth = useContext(AuthContext);
+  return auth;
+}
 
 export default AuthContext;
+
 

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
 // import Layout from "./components/layout/Layout";
 import ScrollTop from "./components/elements/scrollTo/ScrollTop";
@@ -9,32 +10,45 @@ import NotFound from "./components/layout/NotFound";
 import AdNew from "./components/ads/AdNew";
 import UserProfile from "./components/user/UserProfile";
 import RequireAuth from "./components/requireAuth/RequireAuth"
+import { AuthContextProvider } from "./components/context"
 
-function App() {
+function App({ isInitiallyLogged }) {
+  const [isLogged, setIsLogged] = useState(isInitiallyLogged);
+
+  const handleLogin = () => {
+    setIsLogged(true);
+  };
+
+  const handleLogout = () => {
+    setIsLogged(false);
+  };
+
   return (
     <div className="App">
-      <ScrollTop />
-      <Routes>
-        {/* Rutas generales */}
-        <Route path="/" element={<Navigate to="/adverts" />} />
-        <Route path="/adverts" element={<AdsContent />} />
-        <Route path="/adverts/:adsId" element={<AdDetails />} />
+      <AuthContextProvider value={{ isLogged, handleLogin, handleLogout }}>
+        <ScrollTop />
+        <Routes>
+          {/* Rutas generales */}
+          <Route path="/" element={<Navigate to="/adverts" />} />
+          <Route path="/adverts" element={<AdsContent />} />
+          <Route path="/adverts/:adsId" element={<AdDetails />} />
 
-        {/* Hay que proteger RUTAS. NO OLVIDAR!! */}
-        
-          {/*<Route path="/new"  element={<RequireAuth> <AdNew /> </RequireAuth>} />*/}
-          <Route path="/new"  element={ <AdNew /> } />
-          <Route path="/user-profile" element={<UserProfile />} />
-        
-        
+          {/* Hay que proteger RUTAS. NO OLVIDAR!! */}
+          
+            {/*<Route path="/new"  element={<RequireAuth> <AdNew /> </RequireAuth>} />*/}
+            <Route path="/new"  element={ <RequireAuth><AdNew /></RequireAuth> } />
+            <Route path="/user-profile" element={ <RequireAuth><UserProfile /></RequireAuth> } />
+          
+          
 
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+          <Route path="/register" element={<RegisterPage />} />
 
-        {/* Rutas error */}
-        <Route path="/404" element={<NotFound />} />
-        <Route path="*" element={<Navigate to="/404" />} />
-      </Routes>
+          {/* Rutas error */}
+          <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/404" />} />
+        </Routes>
+      </AuthContextProvider>
       {/* <Layout /> */}
     </div>
   );

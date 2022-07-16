@@ -10,6 +10,7 @@ import Spinner from "../elements/spinner/Spinner";
 
 import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
+import Mentions from "../../mentions/Mentions";
 
 const AdDetails = () => {
   const [adDetail, setAdDetail] = useState(null);
@@ -127,6 +128,9 @@ const AdDetails = () => {
                         >
                           Make an offer
                         </Link>
+                      </li>
+                      <li className="list-block-item">
+                        <Mentions />
                       </li>
                       <li className="list-block-item">
                         <Link

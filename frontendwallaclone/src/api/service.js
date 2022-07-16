@@ -17,7 +17,7 @@ export const getAd = (adId) => {
 
 // Tags
 export const getTags = () => {
-  const url = `${adsBaseUrl}/adverts/tags`;
+  const url = `${adsBaseUrl}/tags`;
   return client.get(url);
 };
 

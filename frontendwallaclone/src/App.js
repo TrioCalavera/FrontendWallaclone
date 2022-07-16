@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
+import React, { useState } from "react";
+
 // import Layout from "./components/layout/Layout";
 import ScrollTop from "./components/elements/scrollTo/ScrollTop";
 import LoginPage from "./components/login/LoginPage";
@@ -37,8 +39,7 @@ function App({ isInitiallyLogged }) {
           
             {/*<Route path="/new"  element={<RequireAuth> <AdNew /> </RequireAuth>} />*/}
             <Route path="/new"  element={ <RequireAuth><AdNew /></RequireAuth> } />
-            <Route path="/user-profile" element={ <RequireAuth><UserProfile /></RequireAuth> } />
-          
+            <Route path="/user-profile" element={ <RequireAuth><UserProfile /></RequireAuth> } />     
           
 
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />

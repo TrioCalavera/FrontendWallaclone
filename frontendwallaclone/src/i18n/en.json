@@ -1,0 +1,17 @@
+{
+    "general": {
+        "home": "Home",
+        "user": "User",
+        "languages": "Languages",
+        "english": "En",
+        "spanish": "Es",
+        "login": "Login",
+        "register": "Register",
+        "new_ad": "New Ad"
+    },
+    "banner": {
+        "buyAndSell": "Buy & Sell Near You",
+        "popular_category": "Popular Category",
+        "subtitle": "Join the millions who buy and sell from each other everyday in local communities around the world"
+    }
+}

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import logo from "../../images/logo.png";
 import { useAuth } from '../context';
 import { logout } from "../login/service";
@@ -15,6 +17,13 @@ const Navbar = () => {
     await logout();
     onLogout();
   };
+
+  const lngs = {
+    en: { nativeName: "En" },
+    es: { nativeName: "Es" },
+  };
+
+  const { t, i18n } = useTranslation();
 
   return isLogged ?(
     <section>
@@ -150,7 +159,7 @@ const Navbar = () => {
                         isActive ? { color: "#4883ff" } : null
                       }
                     >
-                      Home
+                      {t("general.home")}
                     </NavLink>
                   </li>
                   <li className="nav-item">
@@ -161,59 +170,40 @@ const Navbar = () => {
                         isActive ? { color: "#4883ff" } : null
                       }
                     >
-                      User
+                      {t("general.user")}
                     </NavLink>
                   </li>
-                  <li className="nav-item dropdown dropdown-slide">
-                    <a href="#" className="nav-link dropdown-toggle">
-                      Pages{" "}
-                      <span>
-                        <i className="fa fa-angle-down"></i>
-                      </span>
-                    </a>
-                    {/* <!-- Dropdown list --> */}
-                    <div className="dropdown-menu">
-                      <NavLink
-                        to="/user-profile"
-                        className="dropdown-item"
-                        style={({ isActive }) =>
-                          isActive ? { color: "#fff" } : null
+                  {Object.keys(lngs).map((lng) => (
+                    <li className="nav-item" key={lng}>
+                      <Link
+                        to="#"
+                        onClick={() => i18n.changeLanguage(lng)}
+                        className={
+                          i18n.resolvedLanguage === lng
+                            ? "languaje-active nav-link"
+                            : "nav-link"
                         }
                       >
-                        User
-                      </NavLink>
-                      <NavLink
-                        to="/404"
-                        className="dropdown-item"
-                        style={({ isActive }) =>
-                          isActive ? { color: "#fff" } : null
-                        }
-                      >
-                        404 Page
-                      </NavLink>
-                      <Link to="/" className="dropdown-item">
-                        Test
+                        {lngs[lng].nativeName}
                       </Link>
-                      <Link to="/" className="dropdown-item">
-                        Blog
-                      </Link>
-                    </div>
-                  </li>
+                    </li>
+                  ))}
                 </ul>
                 <ul className="navbar-nav ml-auto mt-10">
                   <li className="nav-item">
                     <Link to="/login" className="nav-link login-button">
-                      Login
+                      {t("general.login")}
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/register" className="nav-link login-button">
-                      Register
+                      {t("general.register")}
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link text-white add-button" to="/new">
-                      <i className="fa fa-plus-circle"></i> New Ad
+                      <i className="fa fa-plus-circle mr-2"></i>
+                      {t("general.new_ad")}
                     </Link>
                   </li>
                 </ul>

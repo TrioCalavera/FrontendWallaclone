@@ -2755,3 +2755,18 @@ form textarea {
     height: calc(100vh - 563px);
   }
 }
+
+a.languaje-active,
+a.languaje-active:active,
+a.languaje-active:visited {
+  font-weight: bold;
+  width: 2rem;
+  height: 2.5rem;
+  background: #5672f9;
+  color: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  border-radius: 50%;
+}

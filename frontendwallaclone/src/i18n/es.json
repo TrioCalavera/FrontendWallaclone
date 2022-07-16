@@ -1,0 +1,17 @@
+{
+    "general": {
+        "home": "Inicio",
+        "user": "Usuario",
+        "languages": "Idiomas",
+        "english": "En",
+        "spanish": "Es",
+        "login": "Inico Sesión",
+        "register": "Registro",
+        "new_ad": "Nuevo Anuncio"
+    },
+    "banner": {
+        "buyAndSell": "Compre & Venda cerca de usted",
+        "popular_category": "Categorías Populares",
+        "subtitle": "Únase a los millones de personas que compran y venden cada día en las comunidades locales de todo el mundo"
+    }
+}

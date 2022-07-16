@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { login } from "./service";
 import Spinner from "../elements/spinner/Spinner";
 
-function LoginPage() {
+function LoginPage({ onLogin }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [credentials, setCredentials] = useState({
@@ -34,11 +34,14 @@ function LoginPage() {
     try {
       resetError();
       setIsLoading(true);
-      await login(credentials).then(() => {
+      await login(credentials)
+      .then(() => {
         const from = location.state?.from?.pathname || '/';
         navigate(from, { replace: true });
-      });
+      }).catch(err =>
+        window.alert(err.error));
       setIsLoading(false);
+      onLogin();
     } catch (error) {
       setError(error);
       setIsLoading(false);

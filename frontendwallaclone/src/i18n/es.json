@@ -6,6 +6,7 @@
         "english": "En",
         "spanish": "Es",
         "login": "Inico Sesión",
+        "logout": "Cerrar Sesión",
         "register": "Registro",
         "new_ad": "Nuevo Anuncio"
     },

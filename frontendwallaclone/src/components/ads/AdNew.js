@@ -1,8 +1,34 @@
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { getTags, setAdverts } from "../../api/service";
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
+import SelectTags from "../elements/selectTags/SelectTags";
 
 const AdNew = () => {
   const { t, i18n } = useTranslation();
+
+  const [credentials, setCredentials] = useState({
+    name: "",
+    price: "",
+    photo: "",
+    tags: [],
+    sale: false,
+  });
+  const { name, sale, price, tags, photo } = credentials;
+
+  const handleChange = (event) => {
+    console.log("event.target.type", event.target.type);
+    setCredentials((credentials) => ({
+      ...credentials,
+      // [event.target.name]: event.target.type === "radio" ? event.target.checked : event.target.value,
+      [event.target.name]:
+        event.target.type === "radio"
+          ? event.target.checked
+          : event.target.type === "file"
+          ? event.target.files[0]
+          : event.target.value,
+    }));
+  };
 
   return (
     <LayoutWithoutBanner>
@@ -39,14 +65,7 @@ const AdNew = () => {
                       </div>
                     </div>
                   </div>
-                  <select name="" id="" className="form-control w-100">
-                    <option value="1">{t("newadvert.select_category")}</option>
-                    <option value="1">Work</option>
-                    <option value="1">Lifestyle</option>
-                    <option value="1">Mobile</option>
-                    <option value="1">Motor</option>
-                    <option value="1">IT</option>
-                  </select>
+                  <SelectTags />
                   <div className="form-group col-lg-12 pt-4">
                     <div className="choose-file">
                       <input

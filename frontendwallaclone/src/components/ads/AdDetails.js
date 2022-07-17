@@ -7,6 +7,7 @@ import { getAd } from "../../api/service";
 import Modal from "../elements/modal/Modal";
 import NotFound from "../layout/NotFound";
 import Spinner from "../elements/spinner/Spinner";
+import Email from "../../email";
 
 import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
@@ -127,6 +128,9 @@ const AdDetails = () => {
                         >
                           Make an offer
                         </Link>
+                      </li>
+                      <li>
+                        <Email />
                       </li>
                       <li className="list-block-item">
                         <Link

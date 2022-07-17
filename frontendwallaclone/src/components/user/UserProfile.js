@@ -1,6 +1,28 @@
+import { useState, useEffect } from "react";
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import UserGray from "../../images/user-gray.png";
+import Spinner from "../elements/spinner/Spinner";
+import { getMe } from "./service";
+
+
+
 const UserProfile = () => {
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const execute = async () => {
+      setIsLoading(true);
+      const user = await getMe();      
+      setUser(user.user);
+      setIsLoading(false);
+    };
+    execute();
+    return () => {};
+  }, []);
+
+  
   return (
     <LayoutWithoutBanner>
       <section className="user-profile section">
@@ -15,15 +37,14 @@ const UserProfile = () => {
                     <img src={UserGray} alt="" />
                   </div>
                   {/* <!-- User Name --> */}
-                  <h5 className="text-center">Pepe Bigote</h5>
+                  <h5 className="text-center">{user.name}</h5>
                 </div>
                 {/* <!-- Dashboard Links --> */}
                 <div className="widget dashboard-links">
                   <ul>
-                    <li className="my-1 block">Podemos</li>
-                    <li className="my-1 block">Poner</li>
-                    <li className="my-1 block">Los datos que</li>
-                    <li className="my-1 block">Tengamos del user</li>
+                    <li className="my-1 block">UserName: {user.name}</li>
+                    <li className="my-1 block">Role: {user.role}</li>
+                    <li className="my-1 block">Email: {user.email}</li>
                   </ul>
                 </div>
               </div>
@@ -191,6 +212,7 @@ const UserProfile = () => {
           </div>
         </div>
       </section>
+      {isLoading && <Spinner />}
     </LayoutWithoutBanner>
   );
 };

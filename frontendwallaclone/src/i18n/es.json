@@ -23,6 +23,8 @@
         "price": "Precio *",
         "select_category": "Selecciona Categoría",
         "description": "Descripción *",
-        "submit": "Enviar"
+        "submit": "Enviar",
+        "buy": "Compra",
+        "sale": "Venta"
     }
 }

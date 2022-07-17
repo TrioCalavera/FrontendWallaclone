@@ -23,6 +23,8 @@
         "price": "Price *",
         "select_category": "Select Category",
         "description": "Description *",
-        "submit": "Submit"
+        "submit": "Submit",
+        "buy": "Buy",
+        "sale": "Sale"
     }
 }

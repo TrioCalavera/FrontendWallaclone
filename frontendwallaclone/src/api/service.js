@@ -32,5 +32,3 @@ export const deleteAdvert = (adId) => {
   const url = `${adsBaseUrl}/adverts/${adId}`;
   return client.delete(url);
 };
-
-// Detail

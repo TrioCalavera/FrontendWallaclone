@@ -4,7 +4,7 @@ import { setAdverts, getTags } from "../../api/service";
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import Select from "react-select";
 import tools from "../../utils/tools";
-// import FileUploader from "../elements/fileInput/FileInput";
+import axios from "axios";
 
 const AdNew = () => {
   const { t, i18n } = useTranslation();
@@ -57,20 +57,27 @@ const AdNew = () => {
       formData.append("name", name);
       formData.append("price", price);
       formData.append("description", description);
-      formData.append("file", image);
+      formData.append("image", image);
       formData.append("sale", sale);
       formData.append("tags", JSON.stringify(tags));
 
       console.log(Object.fromEntries(formData));
       // resetError();
       // setIsLoading(true);
-      // const createAd = await setAdverts({ name, sale, price, tags });
-      // setCreateAd(createAd);
+      // const createAd = await setAdverts(formData);
+      const createAd = await axios({
+        method: "POST",
+        url: "http://localhost:3001/api/v1/adverts",
+        body: formData,
+        // headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      });
+
+      setCreateAd(createAd);
       // setIsLoading(false);
     } catch (error) {
       // setError(error);
       // setIsLoading(false);
-      // console.log(error);
+      console.log(error);
     }
   };
 

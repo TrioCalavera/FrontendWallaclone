@@ -1,19 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { setAdverts, getTags } from "../../api/service";
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import Select from "react-select";
 import tools from "../../utils/tools";
+import Spinner from "../elements/spinner/Spinner";
 
 const AdNew = () => {
+  //Redirección
+  let navigate = useNavigate();
+
+  //Traducción
   const { t } = useTranslation();
 
   //State petición Tags
   const [tagsAd, setTagsAd] = useState([]);
+
   //State nutrir select tags
   const [selectedOptions, setSelectedOptions] = useState();
-  //State Post New Ads
-  const [createAd, setCreateAd] = useState(null);
+
+  //Error
+  const [error, setError] = useState(null);
+
+  //Spinner
+  const [isLoading, setIsLoading] = useState(false);
 
   //States formulario
   const [name, setName] = useState("");
@@ -49,29 +60,37 @@ const AdNew = () => {
     execute();
   }, []);
 
+  const resetError = () => setError(null);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("price", price);
-      formData.append("description", description);
-      formData.append("image", image);
-      formData.append("sale", sale);
-      formData.append("tags", JSON.stringify(tags));
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("description", description);
+    formData.append("image", image);
+    formData.append("sale", sale);
+    formData.append("tags", JSON.stringify(tags));
+    console.log(Object.fromEntries(formData));
 
-      console.log(Object.fromEntries(formData));
-      // resetError();
-      // setIsLoading(true);
-      const createAd = await setAdverts(formData);
-      // setCreateAd(createAd);
-      // setIsLoading(false);
+    try {
+      resetError();
+      setIsLoading(true);
+      await setAdverts(formData);
+      setIsLoading(false);
+      navigate("/", { replace: true });
     } catch (error) {
-      // setError(error);
-      // setIsLoading(false);
+      setError(error);
+      setIsLoading(false);
       console.log(error);
     }
   };
+
+  const buttonDisabled = useMemo(() => {
+    return (
+      !name || !price || !image || !tags || !sale || !description || isLoading
+    );
+  }, [name, price, image, tags, sale, description, isLoading]);
 
   return (
     <LayoutWithoutBanner>
@@ -178,6 +197,7 @@ const AdNew = () => {
                     <button
                       type="submit"
                       className="btn btn-primary mt-2 float-right uppercase"
+                      disabled={buttonDisabled}
                     >
                       {t("newadvert.submit")}
                     </button>
@@ -188,6 +208,7 @@ const AdNew = () => {
           </div>
         </div>
       </section>
+      {isLoading && <Spinner />}
     </LayoutWithoutBanner>
   );
 };

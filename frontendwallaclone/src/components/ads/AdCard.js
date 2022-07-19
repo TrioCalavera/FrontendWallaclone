@@ -36,7 +36,7 @@ const AdCard = ({ ad }) => {
                 </li>
               </ul>
               <p className="card-text">{ad.description}</p>
-              <div className="flex-center-center">
+              <div className="flex-center">
                 <div className="product-ratings">
                   <ul className="list-inline">
                     <li className="list-inline-item selected">

@@ -4,10 +4,9 @@ import { setAdverts, getTags } from "../../api/service";
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import Select from "react-select";
 import tools from "../../utils/tools";
-import axios from "axios";
 
 const AdNew = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   //State petición Tags
   const [tagsAd, setTagsAd] = useState([]);
@@ -64,15 +63,8 @@ const AdNew = () => {
       console.log(Object.fromEntries(formData));
       // resetError();
       // setIsLoading(true);
-      // const createAd = await setAdverts(formData);
-      const createAd = await axios({
-        method: "POST",
-        url: "http://localhost:3001/api/v1/adverts",
-        body: formData,
-        // headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      });
-
-      setCreateAd(createAd);
+      const createAd = await setAdverts(formData);
+      // setCreateAd(createAd);
       // setIsLoading(false);
     } catch (error) {
       // setError(error);

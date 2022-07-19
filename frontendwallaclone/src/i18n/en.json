@@ -14,5 +14,9 @@
         "buyAndSell": "Buy & Sell Near You",
         "popular_category": "Popular Category",
         "subtitle": "Join the millions who buy and sell from each other everyday in local communities around the world"
+    },
+    "searcher": {
+        "looking_for": "What are you looking for",
+        "search": "Search"
     }
 }

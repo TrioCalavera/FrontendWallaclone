@@ -1,17 +1,74 @@
+import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
+import { getCustomAds } from "../../api/service";
+
 const Searcher = () => {
+  const { t } = useTranslation();
+  // const [customAds, setCustomAds] = useState([]);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const data = "?name=wii";
+  // useEffect(() => {
+  //   const execute = async () => {
+  //     // setIsLoading(true);
+  //     // const customAds = await getCustomAds(data);
+  //     // setCustomAds(customAds.result);
+  //     // console.log("customAds", customAds);
+  //     // setIsLoading(false);
+  //   };
+  //   execute();
+  //   return () => {};
+  // }, []);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("price", price);
+    console.log(Object.fromEntries(formData));
+
+    let query = new URLSearchParams(formData);
+    console.log(decodeURIComponent(query.toString()));
+
+    try {
+      // resetError();
+      // setIsLoading(true);
+      const customAds = await getCustomAds(
+        decodeURIComponent(query.toString())
+      );
+      // setIsLoading(false);
+    } catch (error) {
+      // setError(error);
+      // setIsLoading(false);
+      console.log(error);
+    }
+  };
+
   return (
     <div className="advance-search">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-12 col-md-12 align-content-center">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group col-md-4">
                   <input
                     type="text"
                     className="form-control my-2 my-lg-1"
-                    id="inputtext4"
-                    placeholder="What are you looking for"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder={t("searcher.looking_for")}
+                  />
+                </div>
+                <div className="form-group col-md-4">
+                  <input
+                    type="text"
+                    className="form-control my-2 my-lg-1"
+                    name="price"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    placeholder="precios"
                   />
                 </div>
                 <div className="form-group col-md-3">
@@ -22,17 +79,9 @@ const Searcher = () => {
                     <option value="4">Highest Price</option>
                   </select>
                 </div>
-                <div className="form-group col-md-3">
-                  <input
-                    type="text"
-                    className="form-control my-2 my-lg-1"
-                    id="inputLocation4"
-                    placeholder="Location"
-                  />
-                </div>
                 <div className="form-group col-md-2 align-self-center">
                   <button type="submit" className="btn btn-primary">
-                    Search Now
+                    {t("searcher.search")}
                   </button>
                 </div>
               </div>

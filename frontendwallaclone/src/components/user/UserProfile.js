@@ -15,7 +15,7 @@ const UserProfile = () => {
     const execute = async () => {
       setIsLoading(true);
       const user = await getMe();      
-      setUser(user.user);
+      setUser(user.result);
       setIsLoading(false);
     };
     execute();

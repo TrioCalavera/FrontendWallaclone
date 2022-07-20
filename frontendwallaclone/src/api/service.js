@@ -1,11 +1,6 @@
 import client from "./client";
 
 const adsBaseUrl = "api/v1";
-const config = {
-  headers: {
-    "Content-Type": "multipart/form-data",
-  },
-};
 
 // Lastes Ads
 export const getLatestAds = () => {
@@ -27,6 +22,11 @@ export const getTags = () => {
 
 // Create Ads
 export const setAdverts = (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  };
   const url = `${adsBaseUrl}/adverts`;
   return client.post(url, data, config);
 };

@@ -71,7 +71,6 @@ const AdNew = () => {
     formData.append("image", image);
     formData.append("sale", sale);
     formData.append("tags", JSON.stringify(tags));
-    console.log(Object.fromEntries(formData));
 
     try {
       resetError();
@@ -82,15 +81,12 @@ const AdNew = () => {
     } catch (error) {
       setError(error);
       setIsLoading(false);
-      console.log(error);
     }
   };
 
   const buttonDisabled = useMemo(() => {
-    return (
-      !name || !price || !image || !tags || !sale || !description || isLoading
-    );
-  }, [name, price, image, tags, sale, description, isLoading]);
+    return !name || !price || !tags || !sale || !description || isLoading;
+  }, [name, price, tags, sale, description, isLoading]);
 
   return (
     <LayoutWithoutBanner>

@@ -1,7 +1,11 @@
 import client from "./client";
 
-// CUANDO BACK TENGA LAS RUTAS ESPECIFICARLAS
 const adsBaseUrl = "api/v1";
+const config = {
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+};
 
 // Lastes Ads
 export const getLatestAds = () => {
@@ -22,9 +26,9 @@ export const getTags = () => {
 };
 
 // Create Ads
-export const setAdverts = () => {
+export const setAdverts = (data) => {
   const url = `${adsBaseUrl}/adverts`;
-  return client.post(url);
+  return client.post(url, data, config);
 };
 
 // Delete anuncio :id

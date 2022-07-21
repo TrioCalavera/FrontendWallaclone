@@ -2770,3 +2770,15 @@ a.languaje-active:visited {
   margin-top: 0px;
   border-radius: 50%;
 }
+
+.react-select__control {
+  text-align: left;
+  padding: 0.2rem;
+}
+.react-select__value-container {
+  padding: 0.5rem;
+}
+
+.react-select__value-container {
+  padding: 0;
+}

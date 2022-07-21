@@ -18,13 +18,24 @@ const AdCard = ({ ad }) => {
             <div className="card-body">
               <h4 className="card-title uppercase">{ad.name}</h4>
               <ul className="list-inline product-meta">
-                <li className="list-block-item">
+                <li className="list-block-item mb-1">
                   <i className="fa fa-folder-open-o mr-2"></i>
+                  {/* Anuncios creados del Back */}
                   {ad.tags.map((tag, index) => (
-                    <strong className="mr-2" key={index}>
+                    <strong
+                      className="mr-2 label-color text-capitalize"
+                      key={index}
+                    >
                       {tag}
                     </strong>
                   ))}
+                  {/* Parsear anuncios creados del front */}
+                  {/* 
+                  {JSON.parse(ad.tags[0]).map((tag, index) => (
+                    <strong className="mr-2 label-color text-capitalize" key={index}>
+                      {tag}
+                    </strong>
+                  ))} */}
                 </li>
                 <li className="list-block-item">
                   <i className="fa fa-calendar mr-2"></i>

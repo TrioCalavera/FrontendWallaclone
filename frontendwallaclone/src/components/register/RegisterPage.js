@@ -4,13 +4,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Spinner from "../elements/spinner/Spinner";
 import { register } from "./service";
 
-const RegisterPage = () => {
+const RegisterPage = ({ onLogin }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [credentials, setCredentials] = useState({
     email: "",
     name: "",
     password: "",
+    role: "user",
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -31,12 +32,14 @@ const RegisterPage = () => {
     try {
       resetError();
       setIsLoading(true);
-      await register(credentials).then(() => {
+      await register(credentials)
+      .then(() => {
         const from = location.state?.from?.pathname || '/';
         navigate(from, { replace: true });
       }).catch(err =>
         window.alert(err.error));
       setIsLoading(false);
+      onLogin();
     } catch (error) {
       setIsLoading(false);
       setError(error);

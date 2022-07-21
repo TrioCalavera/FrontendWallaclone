@@ -42,7 +42,7 @@ function App({ isInitiallyLogged }) {
           
 
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/register" element={<RegisterPage onLogin={handleLogin}/>} />
 
           {/* Rutas error */}
           <Route path="/404" element={<NotFound />} />

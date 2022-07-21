@@ -8,5 +8,9 @@ const adsBaseUrl = "/api/v1";
 
 export const register = ({ ...credentials }) => {
   const url = `${adsBaseUrl}/users`;
-  return client.post(url, credentials);
+  return client.post(url, credentials)
+  .then(({token}) => {
+    setAuthorizationHeader(token);  
+    return token;  
+  });
 };

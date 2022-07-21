@@ -14,5 +14,17 @@
         "buyAndSell": "Compre & Venda cerca de usted",
         "popular_category": "Categorías Populares",
         "subtitle": "Únase a los millones de personas que compran y venden cada día en las comunidades locales de todo el mundo"
+    },
+    "newadvert": {
+        "new_advert": "Nuevo Anuncio",
+        "on_your_mind": "Hola, ¿Qué tienes en mente?",
+        "subtitle": "Añade aquellos artículos que quieras comprar o vender, ponles precio, mételos en una o varias categorías, cuenta una historia atractiva y ya verás cómo lo consigues!!. Ya verás que es muy fácil.",
+        "name": "Nombre *",
+        "price": "Precio *",
+        "select_category": "Selecciona Categoría",
+        "description": "Descripción *",
+        "submit": "Enviar",
+        "buy": "Compra",
+        "sale": "Venta"
     }
 }

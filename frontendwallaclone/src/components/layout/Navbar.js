@@ -3,13 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import logo from "../../images/logo.png";
-import { useAuth } from '../context';
+import { useAuth } from "../context";
 import { logout } from "../login/service";
 
 const Navbar = () => {
   const { isLogged, handleLogout: onLogout } = useAuth();
 
-  console.log(isLogged);
+  // console.log(isLogged);
   const [menuBurger, setMenuBurger] = useState(false);
   const handleMenuBurger = () => setMenuBurger(!menuBurger);
 
@@ -25,7 +25,7 @@ const Navbar = () => {
 
   const { t, i18n } = useTranslation();
 
-  return isLogged ?(
+  return isLogged ? (
     <section>
       <div className="container">
         <div className="row">
@@ -90,8 +90,12 @@ const Navbar = () => {
                 </ul>
                 <ul className="navbar-nav ml-auto mt-10">
                   <li className="nav-item">
-                    <Link to="/" className="nav-link login-button" onClick={handleLogoutClick}>
-                      {t("general.logout")}                      
+                    <Link
+                      to="/"
+                      className="nav-link login-button"
+                      onClick={handleLogoutClick}
+                    >
+                      {t("general.logout")}
                     </Link>
                   </li>
                   <li className="nav-item">
@@ -107,7 +111,7 @@ const Navbar = () => {
         </div>
       </div>
     </section>
-  ):(
+  ) : (
     <section>
       <div className="container">
         <div className="row">

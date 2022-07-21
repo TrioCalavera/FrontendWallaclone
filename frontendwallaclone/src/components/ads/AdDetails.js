@@ -1,5 +1,4 @@
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
-import EmptyAd from "../elements/emptyAd/EmptyAd";
 import "./css/adDetails.css";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -24,14 +23,9 @@ const AdDetails = () => {
   const handleModalHidden = () => setModal(false);
 
   useEffect(() => {
-    try {
-      setIsLoading(true);
-      getAd(adId[0]).then((adDetail) => setAdDetail(adDetail.result));
-      setIsLoading(false);
-    } catch (error) {
-      console.log("error", error);
-      setIsLoading(false);
-    }
+    setIsLoading(true);
+    getAd(adId[0]).then((adDetail) => setAdDetail(adDetail.result));
+    setIsLoading(false);
   }, []);
 
   return (
@@ -40,6 +34,8 @@ const AdDetails = () => {
 
       {!adDetail ? (
         <NotFound />
+      ) : isLoading ? (
+        <Spinner />
       ) : (
         <section className="section bg-gray">
           <div className="container">
@@ -51,19 +47,31 @@ const AdDetails = () => {
                     <ul className="list-inline">
                       <li className="list-inline-item">
                         <i className="fa fa-user-o"></i> By{" "}
-                        <strong>Pepe Bigote</strong>
+                        <strong className="label-color">Pepe Bigote</strong>
                       </li>
                       <li className="list-inline-item">
                         <i className="fa fa-folder-open-o"></i> Category{" "}
+                        {/* Parsear anuncios creados del front */}
+                        {/* {JSON.parse(adDetail.tags[0]).map((tag, index) => (
+                          <strong className="mr-2 label-color text-capitalize" key={index}>
+                            {tag}
+                          </strong>
+                        ))} */}
+                        {/* Anuncios creados del Back */}
                         {adDetail.tags.map((tag, index) => (
-                          <strong className="mr-2" key={index}>
+                          <strong
+                            className="mr-2 label-color text-capitalize"
+                            key={index}
+                          >
                             {tag}
                           </strong>
                         ))}
                       </li>
                       <li className="list-inline-item">
                         <i className="fa fa-user-o"></i> Type{" "}
-                        <strong>{adDetail.sale ? "Sale" : "Buy"}</strong>
+                        <strong className="label-color">
+                          {adDetail.sale ? "Sale" : "Buy"}
+                        </strong>
                       </li>
                     </ul>
                   </div>

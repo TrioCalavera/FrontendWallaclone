@@ -3,6 +3,7 @@ import "./css/adDetails.css";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAd } from "../../api/service";
+import { getMe, getOwner } from "../user/service";
 import Modal from "../elements/modal/Modal";
 import NotFound from "../layout/NotFound";
 import Spinner from "../elements/spinner/Spinner";
@@ -11,6 +12,8 @@ import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
 
 const AdDetails = () => {
+  const [user, setUser] = useState(null);
+
   const [adDetail, setAdDetail] = useState(null);
 
   //Revisar pq lo tengo que hacer así... Object.values
@@ -23,20 +26,24 @@ const AdDetails = () => {
   const handleModalHidden = () => setModal(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    getAd(adId[0]).then((adDetail) => setAdDetail(adDetail.result));
-    setIsLoading(false);
+    const execute = async () => {
+      setIsLoading(true);
+      await getAd(adId[0]).then((adDetail) => {
+        setAdDetail(adDetail.result);
+      });
+      await getMe().then((user) => setUser(user.result));
+      setIsLoading(false);
+    };
+    execute();
   }, []);
 
   return (
     <LayoutWithoutBanner>
       {modal && <Modal handleModalHidden={handleModalHidden} />}
 
-      {!adDetail ? (
-        <NotFound />
-      ) : isLoading ? (
+      {isLoading ? (
         <Spinner />
-      ) : (
+      ) : adDetail ? (
         <section className="section bg-gray">
           <div className="container">
             <div className="row">
@@ -47,7 +54,7 @@ const AdDetails = () => {
                     <ul className="list-inline">
                       <li className="list-inline-item">
                         <i className="fa fa-user-o"></i> By{" "}
-                        <strong className="label-color">Pepe Bigote</strong>
+                        <strong className="label-color">Nombre</strong>
                       </li>
                       <li className="list-inline-item">
                         <i className="fa fa-folder-open-o"></i> Category{" "}
@@ -115,7 +122,7 @@ const AdDetails = () => {
                       alt=""
                     />
                     <h4>
-                      <Link to="/">Pepe Bigote</Link>
+                      <Link to="/">Nombre</Link>
                     </h4>
                     <p className="member-time">Member Since Jun 27, 2017</p>
                     <Link to="/">See all ads</Link>
@@ -136,15 +143,17 @@ const AdDetails = () => {
                           Make an offer
                         </Link>
                       </li>
-                      <li className="list-block-item">
-                        <Link
-                          to="#"
-                          className="btn btn-offer d-inline-block btn-danger ml-n1 my-1 px-lg-4 px-md-3"
-                          onClick={handleModalVisible}
-                        >
-                          Delete Ad
-                        </Link>
-                      </li>
+                      {user._id === adDetail.user && (
+                        <li className="list-block-item">
+                          <Link
+                            to="#"
+                            className="btn btn-offer d-inline-block btn-danger ml-n1 my-1 px-lg-4 px-md-3"
+                            onClick={handleModalVisible}
+                          >
+                            Delete Ad
+                          </Link>
+                        </li>
+                      )}
                     </ul>
                   </div>
                 </div>
@@ -152,6 +161,8 @@ const AdDetails = () => {
             </div>
           </div>
         </section>
+      ) : (
+        <NotFound />
       )}
     </LayoutWithoutBanner>
   );

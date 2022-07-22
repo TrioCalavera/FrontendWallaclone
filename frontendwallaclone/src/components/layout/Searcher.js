@@ -60,14 +60,6 @@ const Searcher = () => {
     }
   };
 
-  const customStyles = {
-    option: () => ({
-      borderBottom: "5px dotted pink",
-      color: "blue",
-      padding: 20,
-    }),
-  };
-
   return (
     <div className="advance-search">
       <div className="container">
@@ -94,7 +86,6 @@ const Searcher = () => {
                     isMulti
                     options={tagsAd}
                     name={tags}
-                    style={customStyles}
                     className="react-select__control react-select__value-container react-select__value-container"
                     classNamePrefix="react-select"
                   />

@@ -68,7 +68,7 @@ const AdNew = () => {
     formData.append("name", name);
     formData.append("price", price);
     formData.append("description", description);
-    formData.append("image", image);
+    image !== undefined && formData.append("image", image);
     formData.append("sale", sale);
     formData.append("tags", JSON.stringify(tags));
 

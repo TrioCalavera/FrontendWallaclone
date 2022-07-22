@@ -12,6 +12,10 @@ const AdsContent = () => {
     const execute = async () => {
       setIsLoading(true);
       const ads = await getLatestAds();
+      // Ordenados de mas nuevos a mas antiguos
+      ads.result.sort((b, a) => {
+        return a.create - b.create;
+      });
       setAds(ads.result);
       setIsLoading(false);
     };

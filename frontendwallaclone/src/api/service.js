@@ -2,9 +2,9 @@ import client from "./client";
 
 const adsBaseUrl = "api/v1";
 
-// Lastes Ads
+// Lastes Ads ordenados por fecha de creación
 export const getLatestAds = () => {
-  const url = `${adsBaseUrl}/adverts`;
+  const url = `${adsBaseUrl}/adverts?sort=create`;
   return client.get(url);
 };
 

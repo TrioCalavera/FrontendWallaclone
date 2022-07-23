@@ -65,7 +65,7 @@
         "now": "Registrese ahora",
         "login": "Iniciar sesion",
         "loginNow": "Iniciar sesion ahora",
-        "keepMe": "Mntenme conectado"
+        "keepMe": "Mantenme conectado"
     },
     "adscontent": {
         "title": "Tendencia ahora",
@@ -92,8 +92,7 @@
         "delete": "Borra",
         "close": "Cerrar modal"
     },
-    "404":
-    {
+    "404": {
         "ops": "Ups",
         "something": "Algo salió mal, no podemos encontrar la página en la que estás buscando :",
         "but": "¡Pero hay mucho más para ti!",

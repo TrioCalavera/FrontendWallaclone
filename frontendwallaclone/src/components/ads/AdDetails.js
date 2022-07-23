@@ -8,16 +8,20 @@ import Modal from "../elements/modal/Modal";
 import NotFound from "../layout/NotFound";
 import Spinner from "../elements/spinner/Spinner";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "../context";
+import { ContactUs } from "../elements/ContactUs/ContactUs";
 
 import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
 
 const AdDetails = () => {
+  const { isLogged } = useAuth();
+
   const [user, setUser] = useState(null);
 
   const [adDetail, setAdDetail] = useState(null);
 
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
 
   //Revisar pq lo tengo que hacer así... Object.values
   const adId = Object.values(useParams());
@@ -34,7 +38,10 @@ const AdDetails = () => {
       await getAd(adId[0]).then((adDetail) => {
         setAdDetail(adDetail.result);
       });
-      await getMe().then((user) => setUser(user.result));
+      isLogged &&
+        (await getMe()
+          .then((user) => setUser(user.result))
+          .catch((error) => console.log(error)));
       setIsLoading(false);
     };
     execute();
@@ -44,9 +51,11 @@ const AdDetails = () => {
     <LayoutWithoutBanner>
       {modal && <Modal handleModalHidden={handleModalHidden} />}
 
-      {isLoading ? (
+      {!adDetail ? (
+        <NotFound />
+      ) : isLoading ? (
         <Spinner />
-      ) : adDetail ? (
+      ) : (
         <section className="section bg-gray">
           <div className="container">
             <div className="row">
@@ -57,10 +66,13 @@ const AdDetails = () => {
                     <ul className="list-inline">
                       <li className="list-inline-item">
                         <i className="fa fa-user-o"></i> By{" "}
-                        <strong className="label-color">{t("details.name")}</strong>
+                        <strong className="label-color">
+                          {t("details.name")}
+                        </strong>
                       </li>
                       <li className="list-inline-item">
-                        <i className="fa fa-folder-open-o"></i> {t("details.category")}{" "}
+                        <i className="fa fa-folder-open-o"></i>{" "}
+                        {t("details.category")}{" "}
                         {/* Parsear anuncios creados del front */}
                         {/* {JSON.parse(adDetail.tags[0]).map((tag, index) => (
                           <strong className="mr-2 label-color text-capitalize" key={index}>
@@ -105,7 +117,9 @@ const AdDetails = () => {
                         role="tabpanel"
                         aria-labelledby="pills-home-tab"
                       >
-                        <h3 className="tab-title">{t("details.description")}</h3>
+                        <h3 className="tab-title">
+                          {t("details.description")}
+                        </h3>
                         <p>{adDetail.description}</p>
                       </div>
                     </div>
@@ -127,26 +141,17 @@ const AdDetails = () => {
                     <h4>
                       <Link to="/">{t("details.name")}</Link>
                     </h4>
-                    <p className="member-time">{t("details.memberSince")} Jun 27, 2017</p>
+                    <p className="member-time">
+                      {t("details.memberSince")} Jun 27, 2017
+                    </p>
                     <Link to="/">{t("details.see")}</Link>
                     <ul className="list-inline mt-20">
-                      <li className="list-block-item">
-                        <Link
-                          to="/"
-                          className="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3"
-                        >
-                          {t("details.contact")}
-                        </Link>
-                      </li>
-                      <li className="list-block-item">
-                        <Link
-                          to="/"
-                          className="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3"
-                        >
-                          {t("details.make")}
-                        </Link>
-                      </li>
-                      {user._id === adDetail.user && (
+                      {user?._id !== adDetail.user && (
+                        <li className="list-block-item">
+                          <ContactUs />
+                        </li>
+                      )}
+                      {user?._id === adDetail.user && (
                         <li className="list-block-item">
                           <Link
                             to="#"
@@ -164,8 +169,6 @@ const AdDetails = () => {
             </div>
           </div>
         </section>
-      ) : (
-        <NotFound />
       )}
     </LayoutWithoutBanner>
   );

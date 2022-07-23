@@ -3,6 +3,7 @@ import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { login } from "./service";
 import Spinner from "../elements/spinner/Spinner";
+import { useTranslation } from 'react-i18next';
 
 function LoginPage({ onLogin }) {
   const navigate = useNavigate();
@@ -28,6 +29,8 @@ function LoginPage({ onLogin }) {
   }, []);
 
   const resetError = () => setError(null);
+
+  const { t } = useTranslation();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -59,7 +62,7 @@ function LoginPage({ onLogin }) {
           <div className="row justify-content-center">
             <div className="col-lg-5 col-md-8 align-item-center">
               <div className="border">
-                <h3 className="bg-gray p-4">Login Now</h3>
+                <h3 className="bg-gray p-4">{t("register.loginNow")}</h3>
                 <form action="#" onSubmit={handleSubmit}>
                   <fieldset className="p-4">
                     <input
@@ -88,7 +91,7 @@ function LoginPage({ onLogin }) {
                         htmlFor="keep-me-logged-in"
                         className="pt-3 pb-2 ml-2"
                       >
-                        Keep me logged in
+                        {t("register.keepMe")}
                       </label>
                     </div>
                     <button
@@ -96,13 +99,13 @@ function LoginPage({ onLogin }) {
                       className="btn py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3"                      
                       disabled={buttonDisabled}
                     >
-                      Log in
+                      {t("register.login")}
                     </button>
                     {/* <Link to="/login" className="mt-3 d-block text-primary">
                       Forget Password?
                     </Link> */}
                     <Link className="mt-3 d-block text-primary" to="/register">
-                      Register Now
+                    {t("register.now")}
                     </Link>
                   </fieldset>
                 </form>

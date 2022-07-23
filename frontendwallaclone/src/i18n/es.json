@@ -31,5 +31,76 @@
         "looking_for": "¿Qué estás buscando?",
         "search": "Buscar",
         "range_prices": "Rango de precios"
+    },
+    "footer": {
+        "sitesPages": "Paginas de sitios",
+        "adminPages": "Paginas de administracion",
+        "aplication": "Obtenga la aplicación móvil  y ahorre más",
+        "textFooter": "Visita nuestra pagina web y accede a miles de anuncios de productos nuevos, de segunda mano y de ocasión. Estamos presentes en la mayor parte de paises de Europa y en Latino America."
+    },
+    "subfooter": {
+        "copy": "Derechos de autor",
+        "rights": "Todos los derechos reservados",
+        "theme": "tema por",
+        "quartet": "Cuarteto Calavera"
+    },
+    "users": {
+        "edit": "Editar perfil",
+        "text": "Esta es la información que los demás usuarios podrán ver de ti.",
+        "personal": "Editar información personal",
+        "name": "Nombre",
+        "last": "Apellido",
+        "comunity": "Nombre de la comunidad",
+        "userName": "Nombre de usuario",
+        "role": "Rol",
+        "email": "Direccion de correo",
+        "hide": "Ocultar perfil de Público/Comunidad",
+        "save": "Guardar mis cambios",
+        "password": "Editar password",
+        "current": "Contraseña actual",
+        "new": "Nueva contraseña",
+        "confirm": "Confirma la nueva contraseña",
+        "change": "Cambia la contraseña",
+        "editEmail": "Edita la direccion de correo electronico",
+        "currentEmail": "Direccion de correo electronico actual",
+        "newEmail": "Nueva direccion de correo electronico",
+        "changeEmail": "Cambia la direccion de coreo electronico"
+    },
+    "register": {
+        "now": "Registrese ahora",
+        "login": "Iniciar sesion",
+        "loginNow": "Iniciar sesion ahora",
+        "keepMe": "Mantenme conectado"
+    },
+    "adscontent": {
+        "title": "Tendencia ahora",
+        "text": "Visita las tendencias en moda, motor, estilo de vida y miles de cosas mas"
+    },
+    "details": {
+        "name": "Nombre",
+        "category": "Categoria",
+        "type": "Tipo",
+        "description": "Descripción del producto",
+        "price": "Precio",
+        "memberSince": "Miembro desde",
+        "see": "Ver todos los anuncios",
+        "contact": "Contacto",
+        "make": "Haz una oferta",
+        "delete": "Borra el anuncio"
+    },
+    "empty": {
+        "emptyAd": "Aún no hay nada aquí...",
+        "home": "Inicio"
+    },
+    "modal": {
+        "estasSeguro": "¿Seguro que quieres borrarlo?",
+        "delete": "Borra",
+        "close": "Cerrar modal"
+    },
+    "404": {
+        "ops": "Ups",
+        "something": "Algo salió mal, no podemos encontrar la página en la que estás buscando :",
+        "but": "¡Pero hay mucho más para ti!",
+        "home": "VUELVE AL INICIO"
     }
 }

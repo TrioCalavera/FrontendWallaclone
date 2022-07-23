@@ -7,11 +7,15 @@ import { getMe, getOwner } from "../user/service";
 import Modal from "../elements/modal/Modal";
 import NotFound from "../layout/NotFound";
 import Spinner from "../elements/spinner/Spinner";
+import { useAuth } from "../context";
+import { ContactUs } from "../elements/ContactUs/ContactUs";
 
 import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
 
 const AdDetails = () => {
+  const { isLogged } = useAuth();
+
   const [user, setUser] = useState(null);
 
   const [adDetail, setAdDetail] = useState(null);
@@ -31,7 +35,10 @@ const AdDetails = () => {
       await getAd(adId[0]).then((adDetail) => {
         setAdDetail(adDetail.result);
       });
-      await getMe().then((user) => setUser(user.result));
+      isLogged &&
+        (await getMe()
+          .then((user) => setUser(user.result))
+          .catch((error) => console.log(error)));
       setIsLoading(false);
     };
     execute();
@@ -127,23 +134,12 @@ const AdDetails = () => {
                     <p className="member-time">Member Since Jun 27, 2017</p>
                     <Link to="/">See all ads</Link>
                     <ul className="list-inline mt-20">
-                      <li className="list-block-item">
-                        <Link
-                          to="/"
-                          className="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3"
-                        >
-                          Contact
-                        </Link>
-                      </li>
-                      <li className="list-block-item">
-                        <Link
-                          to="/"
-                          className="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3"
-                        >
-                          Make an offer
-                        </Link>
-                      </li>
-                      {user._id === adDetail.user && (
+                      {user?._id !== adDetail.user && (
+                        <li className="list-block-item">
+                          <ContactUs />
+                        </li>
+                      )}
+                      {user?._id === adDetail.user && (
                         <li className="list-block-item">
                           <Link
                             to="#"

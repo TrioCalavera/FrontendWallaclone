@@ -29,6 +29,7 @@
     },
     "searcher": {
         "looking_for": "What are you looking for",
-        "search": "Search"
+        "search": "Search",
+        "range_prices": "Range prices"
     }
 }

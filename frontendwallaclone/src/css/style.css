@@ -2782,3 +2782,12 @@ a.languaje-active:visited {
 .react-select__value-container {
   padding: 0;
 }
+
+.zindex5 {
+  z-index: 5;
+}
+
+.relative_top {
+  position: relative;
+  top: 10px;
+}

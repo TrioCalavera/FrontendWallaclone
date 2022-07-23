@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getCustomAds, getTags } from "../../api/service";
 import Select from "react-select";
 import tools from "../../utils/tools";
+import MultiRangeSlider from "../elements/MultiRangeSlider/MultiRangeSlider";
 
 const Searcher = () => {
   const { t } = useTranslation();
@@ -10,13 +11,18 @@ const Searcher = () => {
   //State petición Tags
   const [tagsAd, setTagsAd] = useState([]);
 
+  //Recoger esos tags
   const [tags, setTags] = useState([]);
 
   //State nutrir select tags
   const [selectedOptions, setSelectedOptions] = useState();
 
+  // Recoger text
   const [name, setName] = useState("");
-  // const [price, setPrice] = useState("");
+
+  const [min, setMin] = useState("");
+
+  const [max, setMax] = useState("");
 
   //Manejar nutrir datos al select, los transforma y se los manda a los tags
   const handleSelect = (data) => {
@@ -39,6 +45,15 @@ const Searcher = () => {
     execute();
   }, []);
 
+  const handlePrice = () => {
+    return `${min}-${max}`;
+  };
+
+  const handleReset = () => {
+    const name = "";
+    setName(name);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -46,6 +61,7 @@ const Searcher = () => {
     //Validaciones Searcher
     name && formData.append("name", name);
     tags.length && formData.append("tags", tags);
+    formData.append("price", handlePrice());
     console.log(Object.fromEntries(formData));
 
     let query = new URLSearchParams(formData);
@@ -55,6 +71,7 @@ const Searcher = () => {
       const customAds = await getCustomAds(
         decodeURIComponent(query.toString())
       );
+      handleReset();
     } catch (error) {
       console.log(error);
     }
@@ -77,7 +94,7 @@ const Searcher = () => {
                     placeholder={t("searcher.looking_for")}
                   />
                 </div>
-                <div className="form-group col-md-12">
+                <div className="form-group col-md-12 zindex5">
                   <Select
                     placeholder={t("newadvert.select_category")}
                     value={selectedOptions}
@@ -89,6 +106,19 @@ const Searcher = () => {
                     className="react-select__control react-select__value-container react-select__value-container"
                     classNamePrefix="react-select"
                   />
+                </div>
+                <div className="form-group col-md-12 mb-5">
+                  <label className="relative_top">
+                    {t("searcher.range_prices")}
+                  </label>
+                  <MultiRangeSlider
+                    min={0}
+                    max={10000}
+                    onChange={({ min, max }) => {
+                      setMin(min);
+                      setMax(max);
+                    }}
+                  ></MultiRangeSlider>
                 </div>
                 <div className="form-group col-md-2 align-self-center">
                   <button type="submit" className="btn btn-primary">

@@ -27,8 +27,9 @@
         "buy": "Compra",
         "sale": "Venta"
     },
-        "searcher": {
+    "searcher": {
         "looking_for": "¿Qué estás buscando?",
-        "search": "Buscar"
+        "search": "Buscar",
+        "range_prices": "Rango de precios"
     }
 }

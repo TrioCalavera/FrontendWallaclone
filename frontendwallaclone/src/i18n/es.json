@@ -86,5 +86,17 @@
     "empty": {
         "emptyAd": "Aún no hay nada aquí...",
         "home": "Inicio"
+    },
+    "modal": {
+        "estasSeguro": "¿Seguro que quieres borrarlo?",
+        "delete": "Borra",
+        "close": "Cerrar modal"
+    },
+    "404":
+    {
+        "ops": "Ups",
+        "something": "Algo salió mal, no podemos encontrar la página en la que estás buscando :",
+        "but": "¡Pero hay mucho más para ti!",
+        "home": "VUELVE AL INICIO"
     }
 }

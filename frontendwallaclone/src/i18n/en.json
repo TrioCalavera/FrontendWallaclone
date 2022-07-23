@@ -92,8 +92,7 @@
         "delete": "Delete",
         "close": "Close Modal"
     },
-    "404":
-    {
+    "404": {
         "ops": "Oops",
         "something": "Something went wrong, we can't find the page that you are looking for :",
         "but": "But there is a lot more for you!",

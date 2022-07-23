@@ -21,7 +21,7 @@ const AdDetails = () => {
 
   const [adDetail, setAdDetail] = useState(null);
 
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
 
   //Revisar pq lo tengo que hacer así... Object.values
   const adId = Object.values(useParams());
@@ -51,9 +51,11 @@ const AdDetails = () => {
     <LayoutWithoutBanner>
       {modal && <Modal handleModalHidden={handleModalHidden} />}
 
-      {isLoading ? (
+      {!adDetail ? (
+        <NotFound />
+      ) : isLoading ? (
         <Spinner />
-      ) : adDetail ? (
+      ) : (
         <section className="section bg-gray">
           <div className="container">
             <div className="row">
@@ -64,10 +66,13 @@ const AdDetails = () => {
                     <ul className="list-inline">
                       <li className="list-inline-item">
                         <i className="fa fa-user-o"></i> By{" "}
-                        <strong className="label-color">{t("details.name")}</strong>
+                        <strong className="label-color">
+                          {t("details.name")}
+                        </strong>
                       </li>
                       <li className="list-inline-item">
-                        <i className="fa fa-folder-open-o"></i> {t("details.category")}{" "}
+                        <i className="fa fa-folder-open-o"></i>{" "}
+                        {t("details.category")}{" "}
                         {/* Parsear anuncios creados del front */}
                         {/* {JSON.parse(adDetail.tags[0]).map((tag, index) => (
                           <strong className="mr-2 label-color text-capitalize" key={index}>
@@ -112,7 +117,9 @@ const AdDetails = () => {
                         role="tabpanel"
                         aria-labelledby="pills-home-tab"
                       >
-                        <h3 className="tab-title">{t("details.description")}</h3>
+                        <h3 className="tab-title">
+                          {t("details.description")}
+                        </h3>
                         <p>{adDetail.description}</p>
                       </div>
                     </div>
@@ -134,7 +141,9 @@ const AdDetails = () => {
                     <h4>
                       <Link to="/">{t("details.name")}</Link>
                     </h4>
-                    <p className="member-time">{t("details.memberSince")} Jun 27, 2017</p>
+                    <p className="member-time">
+                      {t("details.memberSince")} Jun 27, 2017
+                    </p>
                     <Link to="/">{t("details.see")}</Link>
                     <ul className="list-inline mt-20">
                       {user?._id !== adDetail.user && (
@@ -160,8 +169,6 @@ const AdDetails = () => {
             </div>
           </div>
         </section>
-      ) : (
-        <NotFound />
       )}
     </LayoutWithoutBanner>
   );

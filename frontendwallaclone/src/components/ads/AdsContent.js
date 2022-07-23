@@ -7,20 +7,23 @@ import Spinner from "../elements/spinner/Spinner";
 import { useTranslation } from "react-i18next";
 
 const AdsContent = () => {
-
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [ads, setAds] = useState([]);
   useEffect(() => {
     const execute = async () => {
-      setIsLoading(true);
-      const ads = await getLatestAds();
-      // Ordenados de mas nuevos a mas antiguos
-      ads.result.sort((b, a) => {
-        return a.create - b.create;
-      });
-      setAds(ads.result);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const ads = await getLatestAds();
+        // Ordenados de mas nuevos a mas antiguos
+        ads.result.sort((b, a) => {
+          return a.create - b.create;
+        });
+        setAds(ads.result);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+      }
     };
     execute();
     return () => {};
@@ -33,9 +36,7 @@ const AdsContent = () => {
             <div className="col-md-12">
               <div className="section-title">
                 <h2>{t("adscontent.title")}</h2>
-                <p>
-                  {t("adscontent.text")}
-                </p>
+                <p>{t("adscontent.text")}</p>
               </div>
             </div>
           </div>

@@ -8,6 +8,12 @@ export const getLatestAds = () => {
   return client.get(url);
 };
 
+// Custom Ads
+export const getCustomAds = (data) => {
+  const url = `${adsBaseUrl}/adverts/?${data}`;
+  return client.get(url);
+};
+
 // Trae 1 anuncio, el del ID
 export const getAd = (adId) => {
   const url = `${adsBaseUrl}/adverts/${adId}`;

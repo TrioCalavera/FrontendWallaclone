@@ -8,8 +8,6 @@ import { logout } from "../login/service";
 
 const Navbar = () => {
   const { isLogged, handleLogout: onLogout } = useAuth();
-
-  // console.log(isLogged);
   const [menuBurger, setMenuBurger] = useState(false);
   const handleMenuBurger = () => setMenuBurger(!menuBurger);
 

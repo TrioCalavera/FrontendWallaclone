@@ -27,6 +27,11 @@
         "buy": "Compra",
         "sale": "Venta"
     },
+    "searcher": {
+        "looking_for": "¿Qué estás buscando?",
+        "search": "Buscar",
+        "range_prices": "Rango de precios"
+    },
     "footer": {
         "sitesPages": "Paginas de sitios",
         "adminPages": "Paginas de administracion",

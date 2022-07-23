@@ -27,6 +27,11 @@
         "buy": "Buy",
         "sale": "Sale"
     },
+    "searcher": {
+        "looking_for": "What are you looking for",
+        "search": "Search",
+        "range_prices": "Range prices"
+    },
     "footer": {
         "sitesPages": "Sites Pages",
         "adminPages": "Admin pages",

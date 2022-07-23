@@ -3,6 +3,7 @@ import { useState, useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Spinner from "../elements/spinner/Spinner";
 import { register } from "./service";
+import { t } from "i18next";
 
 const RegisterPage = ({ onLogin }) => {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ const RegisterPage = ({ onLogin }) => {
           <div className="row justify-content-center">
             <div className="col-lg-5 col-md-8 align-item-center">
               <div className="border border">
-                <h3 className="bg-gray p-4">Register Now</h3>
+                <h3 className="bg-gray p-4">{t("register.now")}</h3>
                 <form action="#" onSubmit={handleSubmit}>
                   <fieldset className="p-4">
                     <input
@@ -93,7 +94,7 @@ const RegisterPage = ({ onLogin }) => {
                       className="btn py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3"
                       disabled={buttonDisabled}
                     >
-                      Register Now
+                      {t("register.now")}
                     </button>
                   </fieldset>
                 </form>

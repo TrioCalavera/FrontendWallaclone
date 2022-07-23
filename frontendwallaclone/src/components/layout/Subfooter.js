@@ -1,5 +1,8 @@
+import { t } from "i18next";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 const Subfooter = () => {
+   const { t } = useTranslation();
   return (
     <footer className="footer-bottom">
       {/* <!-- Container Start --> */}
@@ -9,10 +12,10 @@ const Subfooter = () => {
             {/* <!-- Copyright --> */}
             <div className="copyright">
               <p>
-                Copyright © {new Date().getFullYear()}. All Rights Reserved,
-                theme by
+                {t("subfooter.copy")} © {new Date().getFullYear()}. {t("subfooter.rights")},
+                {t("subfooter.theme")}
                 <Link className="text-primary" to="/">
-                  &nbsp; Cuarteto Calavera
+                  &nbsp; {t("subfooter.quartet")}
                 </Link>
               </p>
             </div>

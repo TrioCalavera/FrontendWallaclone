@@ -1,7 +1,10 @@
+import { t } from "i18next";
 import { Link } from "react-router-dom";
 import Error from "../../images/404.png";
+import { useTranslation } from "react-i18next";
 
 const NotFound = () => {
+  const { t } = useTranslation();
   return (
     <section className="section bg-gray">
       <div className="container">
@@ -11,14 +14,13 @@ const NotFound = () => {
               <img src={Error} className="img-fluid" alt="" />
             </div>
             <div className="404-content">
-              <h1 className="display-1 pt-1 pb-2">Oops</h1>
+              <h1 className="display-1 pt-1 pb-2">{t("404.ops")}</h1>
               <p className="px-3 pb-2 text-dark">
-                Something went wrong, we can't find the page that you are
-                looking for :( <br />
-                But there is a lot more for you!
+                {t("404.something")}( <br />
+                {t("404.but")}
               </p>
               <Link to="/adverts" className="btn btn-info">
-                GO HOME
+                {t("404.home")}
               </Link>
             </div>
           </div>

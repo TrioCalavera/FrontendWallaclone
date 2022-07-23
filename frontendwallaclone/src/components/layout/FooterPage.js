@@ -3,8 +3,14 @@ import phoneIcon from "../../images/phone-icon.png";
 import apple from "../../images/apple-app-store.png";
 import google from "../../images/google-play-store.png";
 import logoFooter from "../../images/logo-footer.png";
+import { useTranslation } from "react-i18next";
+
+
 
 const FooterPage = () => {
+
+  const { t } = useTranslation();
+
   return (
     <footer className="footer section section-sm">
       {/* <!-- Container Start --> */}
@@ -17,17 +23,14 @@ const FooterPage = () => {
               <img src={logoFooter} alt="" />
               {/* <!-- description --> */}
               <p className="alt-color">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                {t("footer.textFooter")}
               </p>
             </div>
           </div>
           {/* <!-- Link list --> */}
           <div className="col-lg-2 offset-lg-1 col-md-3">
             <div className="block">
-              <h4>Site Pages</h4>
+              <h4>{t("footer.sitesPages")}</h4>
               <ul>
                 <li>
                   <Link to="/">Boston</Link>
@@ -50,7 +53,7 @@ const FooterPage = () => {
           {/* <!-- Link list --> */}
           <div className="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
             <div className="block">
-              <h4>Admin Pages</h4>
+              <h4>{t("footer.adminPages")}</h4>
               <ul>
                 <li>
                   <Link to="/">Category</Link>
@@ -79,7 +82,7 @@ const FooterPage = () => {
                   {/* <!-- Icon --> */}
                   <img src={phoneIcon} alt="mobile-icon" />
                 </Link>
-                <p>Get the Dealsy Mobile App and Save more</p>
+                <p>{t("footer.aplication")}</p>
               </div>
               <div className="download-btn d-flex my-3">
                 <Link to="/">

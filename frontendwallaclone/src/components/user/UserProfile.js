@@ -3,6 +3,7 @@ import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import UserGray from "../../images/user-gray.png";
 import Spinner from "../elements/spinner/Spinner";
 import { getMe } from "./service";
+import { useTranslation } from "react-i18next";
 
 
 
@@ -10,6 +11,7 @@ const UserProfile = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState({});
+  const { t } = useTranslation();
 
   useEffect(() => {
     const execute = async () => {
@@ -21,6 +23,8 @@ const UserProfile = () => {
     execute();
     return () => {};
   }, []);
+
+  
 
   
   return (
@@ -42,9 +46,9 @@ const UserProfile = () => {
                 {/* <!-- Dashboard Links --> */}
                 <div className="widget dashboard-links">
                   <ul>
-                    <li className="my-1 block">UserName: {user.name}</li>
-                    <li className="my-1 block">Role: {user.role}</li>
-                    <li className="my-1 block">Email: {user.email}</li>
+                    <li className="my-1 block">{t("users.userName")}: {user.name}</li>
+                    <li className="my-1 block">{t("users.role")}: {user.role}</li>
+                    <li className="my-1 block">{t("users.email")}: {user.email}</li>
                   </ul>
                 </div>
               </div>
@@ -52,11 +56,9 @@ const UserProfile = () => {
             <div className="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
               {/* <!-- Edit Profile Welcome Text --> */}
               <div className="widget welcome-message">
-                <h2>Edit profile</h2>
+                <h2>{t("users.edit")}</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation
+                  {t("users.text")}
                 </p>
               </div>
               {/* <!-- Edit Personal Info --> */}
@@ -64,12 +66,12 @@ const UserProfile = () => {
                 <div className="col-lg-6 col-md-6">
                   <div className="widget personal-info">
                     <h3 className="widget-header user">
-                      Edit Personal Information
+                      {t("users.personal")}
                     </h3>
                     <form action="#">
                       {/* <!-- First Name --> */}
                       <div className="form-group">
-                        <label htmlFor="first-name">First Name</label>
+                        <label htmlFor="first-name">{t("users.name")}</label>
                         <input
                           type="text"
                           className="form-control"
@@ -78,7 +80,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- Last Name --> */}
                       <div className="form-group">
-                        <label htmlFor="last-name">Last Name</label>
+                        <label htmlFor="last-name">{t("users.last")}</label>
                         <input
                           type="text"
                           className="form-control"
@@ -96,7 +98,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- Comunity Name --> */}
                       <div className="form-group">
-                        <label htmlFor="comunity-name">Comunity Name</label>
+                        <label htmlFor="comunity-name">{t("users.comunity")}</label>
                         <input
                           type="text"
                           className="form-control"
@@ -115,7 +117,7 @@ const UserProfile = () => {
                             value=""
                             id="hide-profile"
                           />
-                          Hide Profile from Public/Comunity
+                          {t("users.hide")}
                         </label>
                       </div>
                       {/* <!-- Zip Code --> */}
@@ -129,7 +131,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- Submit button --> */}
                       <button className="btn btn-transparent">
-                        Save My Changes
+                        {t("users.save")}
                       </button>
                     </form>
                   </div>
@@ -137,12 +139,12 @@ const UserProfile = () => {
                 <div className="col-lg-6 col-md-6">
                   {/* <!-- Change Password --> */}
                   <div className="widget change-password">
-                    <h3 className="widget-header user">Edit Password</h3>
+                    <h3 className="widget-header user">{t("users.password")}</h3>
                     <form action="#">
                       {/* <!-- Current Password --> */}
                       <div className="form-group">
                         <label htmlFor="current-password">
-                          Current Password
+                          {t("users.current")}
                         </label>
                         <input
                           type="password"
@@ -152,7 +154,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- New Password --> */}
                       <div className="form-group">
-                        <label htmlFor="new-password">New Password</label>
+                        <label htmlFor="new-password">{t("users.new")}</label>
                         <input
                           type="password"
                           className="form-control"
@@ -162,7 +164,7 @@ const UserProfile = () => {
                       {/* <!-- Confirm New Password --> */}
                       <div className="form-group">
                         <label htmlFor="confirm-password">
-                          Confirm New Password
+                          {t("users.confirm")}
                         </label>
                         <input
                           type="password"
@@ -172,7 +174,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- Submit Button --> */}
                       <button className="btn btn-transparent">
-                        Change Password
+                        {t("users.change")}
                       </button>
                     </form>
                   </div>
@@ -180,11 +182,11 @@ const UserProfile = () => {
                 <div className="col-lg-6 col-md-6">
                   {/* <!-- Change Email Address --> */}
                   <div className="widget change-email mb-0">
-                    <h3 className="widget-header user">Edit Email Address</h3>
+                    <h3 className="widget-header user">{t("users.editEmail")}</h3>
                     <form action="#">
                       {/* <!-- Current Password --> */}
                       <div className="form-group">
-                        <label htmlFor="current-email">Current Email</label>
+                        <label htmlFor="current-email">{t("users.currentEmail")}</label>
                         <input
                           type="email"
                           className="form-control"
@@ -193,7 +195,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- New email --> */}
                       <div className="form-group">
-                        <label htmlFor="new-email">New email</label>
+                        <label htmlFor="new-email">{t("users.newEmail")}</label>
                         <input
                           type="email"
                           className="form-control"
@@ -202,7 +204,7 @@ const UserProfile = () => {
                       </div>
                       {/* <!-- Submit Button --> */}
                       <button className="btn btn-transparent">
-                        Change email
+                        {t("users.changeEmail")}
                       </button>
                     </form>
                   </div>

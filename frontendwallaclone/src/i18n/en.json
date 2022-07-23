@@ -26,5 +26,77 @@
         "submit": "Submit",
         "buy": "Buy",
         "sale": "Sale"
+    },
+    "footer": {
+        "sitesPages": "Sites Pages",
+        "adminPages": "Admin pages",
+        "aplication": "Get the Dealsy Mobile App and Save more",
+        "textFooter": "Visit our website and access thousands of ads for new, second-hand and used products. We are present in most countries in Europe and Latin America."
+    },
+    "subfooter": {
+        "copy": "Copyright",
+        "rights": "All Rights reserved",
+        "theme": "theme by",
+        "quartet": "Quartet Calavera"
+    },
+    "users": {
+        "edit": "Edit profile",
+        "text": "This is the information that other users will be able to see from you.",
+        "personal": "Edit Personal Information",
+        "name": "First Name",
+        "last": "Last Name",
+        "comunity": "Comunity Name",
+        "userName": "UserName",
+        "role": "Role",
+        "email": "Email",
+        "hide": " Hide Profile from Public/Comunity",
+        "save": "Save My Changes",
+        "password": "Edit Password",
+        "current": "Current Password",
+        "new": "New Password",
+        "confirm": "Confirm New Password",
+        "change": "Change Password",
+        "editEmail": "Edit Email Address",
+        "currentEmail": "Current Email",
+        "newEmail": "New Email",
+        "changeEmail": "Change Email"
+    },
+    "register": {
+        "now": "Register Now",
+        "login": "Log in",
+        "loginNow": "Login Now",
+        "keepMe": "Keep me logged in"
+    },
+    "adscontent": {
+        "title": "Trending Adds",
+        "text": "Visit the trends in fashion, motor, lifestyle and thousands of other things"
+    },
+    "details": {
+        "name": "Name",
+        "category": "Category",
+        "type": "Type",
+        "description": "Product Description",
+        "price": "Price",
+        "memberSince": "Member Since",
+        "see": "See all ads",
+        "contact": "Contact",
+        "make": "Make an ofer",
+        "delete": "Delete ad"
+    },
+    "empty": {
+        "emptyAd": "There's nothing here...",
+        "home": "Home"
+    },
+    "modal": {
+        "estasSeguro": "Are you sure you want to delete it?",
+        "delete": "Delete",
+        "close": "Close Modal"
+    },
+    "404":
+    {
+        "ops": "Oops",
+        "something": "Something went wrong, we can't find the page that you are looking for :",
+        "but": "But there is a lot more for you!",
+        "home": "GO HOME"
     }
 }

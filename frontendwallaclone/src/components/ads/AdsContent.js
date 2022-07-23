@@ -4,8 +4,11 @@ import AdCard from "./AdCard";
 import { getLatestAds } from "../../api/service";
 import EmptyListAds from "../elements/EmptyList/EmptyListAds";
 import Spinner from "../elements/spinner/Spinner";
+import { useTranslation } from "react-i18next";
 
 const AdsContent = () => {
+
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [ads, setAds] = useState([]);
   useEffect(() => {
@@ -29,10 +32,9 @@ const AdsContent = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="section-title">
-                <h2>Trending Adds</h2>
+                <h2>{t("adscontent.title")}</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Quas, magnam.
+                  {t("adscontent.text")}
                 </p>
               </div>
             </div>

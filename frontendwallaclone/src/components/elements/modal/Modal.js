@@ -2,11 +2,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { deleteAdvert } from "../../../api/service";
 import Spinner from "../spinner/Spinner";
+import { useTranslation } from "react-i18next";
 
 import "./modal.css";
 
 const Modal = ({ handleModalHidden }) => {
   let navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const params = Object.values(useParams());
   //   const navigate = Navigate();

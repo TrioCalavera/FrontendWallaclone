@@ -7,6 +7,7 @@ import { getMe, getOwner } from "../user/service";
 import Modal from "../elements/modal/Modal";
 import NotFound from "../layout/NotFound";
 import Spinner from "../elements/spinner/Spinner";
+import { useTranslation } from "react-i18next";
 
 import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
@@ -15,6 +16,8 @@ const AdDetails = () => {
   const [user, setUser] = useState(null);
 
   const [adDetail, setAdDetail] = useState(null);
+
+  const { t } = useTranslation(); 
 
   //Revisar pq lo tengo que hacer así... Object.values
   const adId = Object.values(useParams());
@@ -54,10 +57,10 @@ const AdDetails = () => {
                     <ul className="list-inline">
                       <li className="list-inline-item">
                         <i className="fa fa-user-o"></i> By{" "}
-                        <strong className="label-color">Nombre</strong>
+                        <strong className="label-color">{t("details.name")}</strong>
                       </li>
                       <li className="list-inline-item">
-                        <i className="fa fa-folder-open-o"></i> Category{" "}
+                        <i className="fa fa-folder-open-o"></i> {t("details.category")}{" "}
                         {/* Parsear anuncios creados del front */}
                         {/* {JSON.parse(adDetail.tags[0]).map((tag, index) => (
                           <strong className="mr-2 label-color text-capitalize" key={index}>
@@ -75,7 +78,7 @@ const AdDetails = () => {
                         ))}
                       </li>
                       <li className="list-inline-item">
-                        <i className="fa fa-user-o"></i> Type{" "}
+                        <i className="fa fa-user-o"></i> {t("details.type")}{" "}
                         <strong className="label-color">
                           {adDetail.sale ? "Sale" : "Buy"}
                         </strong>
@@ -102,7 +105,7 @@ const AdDetails = () => {
                         role="tabpanel"
                         aria-labelledby="pills-home-tab"
                       >
-                        <h3 className="tab-title">Product Description</h3>
+                        <h3 className="tab-title">{t("details.description")}</h3>
                         <p>{adDetail.description}</p>
                       </div>
                     </div>
@@ -112,7 +115,7 @@ const AdDetails = () => {
               <div className="col-md-4">
                 <div className="sidebar">
                   <div className="widget price text-center">
-                    <h4>Price</h4>
+                    <h4>{t("details.price")}</h4>
                     <p>{adDetail.price} €</p>
                   </div>
                   <div className="widget user text-center">
@@ -122,17 +125,17 @@ const AdDetails = () => {
                       alt=""
                     />
                     <h4>
-                      <Link to="/">Nombre</Link>
+                      <Link to="/">{t("details.name")}</Link>
                     </h4>
-                    <p className="member-time">Member Since Jun 27, 2017</p>
-                    <Link to="/">See all ads</Link>
+                    <p className="member-time">{t("details.memberSince")} Jun 27, 2017</p>
+                    <Link to="/">{t("details.see")}</Link>
                     <ul className="list-inline mt-20">
                       <li className="list-block-item">
                         <Link
                           to="/"
                           className="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3"
                         >
-                          Contact
+                          {t("details.contact")}
                         </Link>
                       </li>
                       <li className="list-block-item">
@@ -140,7 +143,7 @@ const AdDetails = () => {
                           to="/"
                           className="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3"
                         >
-                          Make an offer
+                          {t("details.make")}
                         </Link>
                       </li>
                       {user._id === adDetail.user && (
@@ -150,7 +153,7 @@ const AdDetails = () => {
                             className="btn btn-offer d-inline-block btn-danger ml-n1 my-1 px-lg-4 px-md-3"
                             onClick={handleModalVisible}
                           >
-                            Delete Ad
+                            {t("details.delete")}
                           </Link>
                         </li>
                       )}

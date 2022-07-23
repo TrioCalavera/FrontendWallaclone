@@ -70,5 +70,21 @@
     "adscontent": {
         "title": "Tendencia ahora",
         "text": "Visita las tendencias en moda, motor, estilo de vida y miles de cosas mas"
-    } 
+    },
+    "details": {
+        "name": "Nombre",
+        "category": "Categoria",
+        "type": "Tipo",
+        "description": "Descripción del producto",
+        "price": "Precio",
+        "memberSince": "Miembro desde",
+        "see": "Ver todos los anuncios",
+        "contact": "Contacto",
+        "make": "Haz una oferta",
+        "delete": "Borra el anuncio"
+    },
+    "empty": {
+        "emptyAd": "Aún no hay nada aquí...",
+        "home": "Inicio"
+    }
 }

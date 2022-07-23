@@ -70,5 +70,21 @@
     "adscontent": {
         "title": "Trending Adds",
         "text": "Visit the trends in fashion, motor, lifestyle and thousands of other things"
-    } 
+    },
+    "details": {
+        "name": "Name",
+        "category": "Category",
+        "type": "Type",
+        "description": "Product Description",
+        "price": "Price",
+        "memberSince": "Member Since",
+        "see": "See all ads",
+        "contact": "Contact",
+        "make": "Make an ofer",
+        "delete": "Delete ad"
+    },
+    "empty": {
+        "emptyAd": "There's nothing here...",
+        "home": "Home"
+    }
 }

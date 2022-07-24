@@ -40,11 +40,12 @@ function LoginPage({ onLogin }) {
       await login(credentials)
       .then(() => {
         const from = location.state?.from?.pathname || '/';
+        onLogin();
         navigate(from, { replace: true });
+        setIsLoading(false);
       }).catch(err =>
         window.alert(err.error));
-      setIsLoading(false);
-      onLogin();
+      setIsLoading(false);      
     } catch (error) {
       setError(error);
       setIsLoading(false);

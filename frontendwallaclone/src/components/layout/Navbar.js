@@ -159,7 +159,7 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   {Object.keys(lngs).map((lng) => (
-                    <li className="nav-item" key={lng}>
+                    <li className="nav-item flex-center-center" key={lng}>
                       <Link
                         to="#"
                         onClick={() => i18n.changeLanguage(lng)}

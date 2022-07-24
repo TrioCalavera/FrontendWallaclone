@@ -6,8 +6,8 @@ const EmptyListAds = () => {
   const { t } = useTranslation();
   return (
     <div className="container emptylist">
-      <h3>Be the first to upload something</h3>
-      <Link to="/new">Create new adverts</Link>
+      <h3>{t("emptyList.first")}</h3>
+      <Link to="/new">{t("emptyList.create")}</Link>
     </div>
   );
 };

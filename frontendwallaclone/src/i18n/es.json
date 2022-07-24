@@ -104,5 +104,9 @@
         "something": "Algo salió mal, no podemos encontrar la página en la que estás buscando :",
         "but": "¡Pero hay mucho más para ti!",
         "home": "VUELVE AL INICIO"
+    },
+    "emptyList": {
+        "first": "Se el primero en subir algo",
+        "create": "Crea nuevos anuncios"
     }
 }

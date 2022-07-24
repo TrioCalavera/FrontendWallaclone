@@ -104,5 +104,9 @@
         "something": "Something went wrong, we can't find the page that you are looking for :",
         "but": "But there is a lot more for you!",
         "home": "GO HOME"
+    },
+    "emptyList": {
+        "first": "Be the first to upload something",
+        "create": "Create new adverts"
     }
 }

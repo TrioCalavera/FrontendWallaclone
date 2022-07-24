@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import React, { useState } from "react";
 
 import { useTranslation } from "react-i18next";
-import CookieConsent, { Cookies } from "react-cookie-consent";
+import CookieConsent from "react-cookie-consent";
 
 import ScrollTop from "./components/elements/scrollTo/ScrollTop";
 import LoginPage from "./components/login/LoginPage";

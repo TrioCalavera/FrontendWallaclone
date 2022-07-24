@@ -34,7 +34,7 @@ export const ContactUs = () => {
   return (
     <form ref={form} onSubmit={sendEmail}>
       <fieldset className="p-4">
-        <h4>Hacer una oferta</h4>
+        <h4>{t("details.make_offer")}</h4>
         <div className="form-group">
           <div className="row">
             <div className="col-lg-12 py-2">
@@ -49,7 +49,7 @@ export const ContactUs = () => {
               <input
                 type="email"
                 name="email"
-                placeholder={t("newadvert.price")}
+                placeholder={t("users.email")}
                 className="form-control"
                 required
               />
@@ -58,7 +58,7 @@ export const ContactUs = () => {
         </div>
         <textarea
           name="mensaje"
-          placeholder={t("newadvert.description")}
+          placeholder={t("details.offers")}
           className="border w-100 p-3 mt-3 mt-lg-4"
           required
         ></textarea>

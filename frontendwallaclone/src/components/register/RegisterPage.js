@@ -3,9 +3,11 @@ import { useState, useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Spinner from "../elements/spinner/Spinner";
 import { register } from "./service";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const RegisterPage = ({ onLogin }) => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const location = useLocation();
   const [credentials, setCredentials] = useState({
@@ -34,11 +36,11 @@ const RegisterPage = ({ onLogin }) => {
       resetError();
       setIsLoading(true);
       await register(credentials)
-      .then(() => {
-        const from = location.state?.from?.pathname || '/';
-        navigate(from, { replace: true });
-      }).catch(err =>
-        window.alert(err.error));
+        .then(() => {
+          const from = location.state?.from?.pathname || "/";
+          navigate(from, { replace: true });
+        })
+        .catch((err) => window.alert(err.error));
       setIsLoading(false);
       onLogin();
     } catch (error) {

@@ -71,15 +71,17 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   {Object.keys(lngs).map((lng) => (
-                    <li className="nav-item" key={lng}>
+                    <li className="nav-item flex-center-center" key={lng}>
                       <Link
                         to="#"
                         onClick={() => i18n.changeLanguage(lng)}
-                        className={
-                          i18n.resolvedLanguage === lng
-                            ? "languaje-active nav-link"
-                            : "nav-link"
-                        }
+                        className={`nav-link  
+                          ${
+                            i18n.resolvedLanguage === lng
+                              ? "languaje-active nav-link"
+                              : ""
+                          }
+                        `}
                       >
                         {lngs[lng].nativeName}
                       </Link>
@@ -87,7 +89,7 @@ const Navbar = () => {
                   ))}
                 </ul>
                 <ul className="navbar-nav ml-auto mt-10">
-                  <li className="nav-item">
+                  <li className="nav-item mb-2-responsive">
                     <Link
                       to="/"
                       className="nav-link login-button"

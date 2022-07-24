@@ -86,7 +86,9 @@
         "see": "Ver todos los anuncios",
         "contact": "Contacto",
         "make": "Haz una oferta",
-        "delete": "Borra el anuncio"
+        "delete": "Borra el anuncio",
+        "offers": "Oferta",
+        "make_offer": "Hacer una oferta"
     },
     "empty": {
         "emptyAd": "Aún no hay nada aquí...",

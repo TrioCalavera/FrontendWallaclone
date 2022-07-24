@@ -2735,9 +2735,15 @@ form textarea {
   text-transform: uppercase;
 }
 
-.flex-center-center {
+.flex-between-center {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center-center {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 .space {
@@ -2790,4 +2796,10 @@ a.languaje-active:visited {
 .relative_top {
   position: relative;
   top: 10px;
+}
+
+@media (max-width: 990px) {
+  .mb-2-responsive {
+    margin-bottom: 0.5rem;
+  }
 }

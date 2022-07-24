@@ -86,7 +86,9 @@
         "see": "See all ads",
         "contact": "Contact",
         "make": "Make an ofer",
-        "delete": "Delete ad"
+        "delete": "Delete ad",
+        "offers": "Offers",
+        "make_offer": "Make an offer"
     },
     "empty": {
         "emptyAd": "There's nothing here...",

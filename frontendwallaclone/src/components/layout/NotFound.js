@@ -1,7 +1,6 @@
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Error from "../../images/404.png";
-import { useTranslation } from "react-i18next";
 
 const NotFound = () => {
   const { t } = useTranslation();

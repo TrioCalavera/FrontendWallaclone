@@ -108,5 +108,9 @@
     "emptyList": {
         "first": "Be the first to upload something",
         "create": "Create new adverts"
+    },
+    "cookies": {
+        "text": "This website uses cookies to enhance the user experience.",
+        "button": "Sure man!!"
     }
 }

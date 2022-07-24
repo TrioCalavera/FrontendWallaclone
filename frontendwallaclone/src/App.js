@@ -1,7 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import React, { useState } from "react";
 
-// import Layout from "./components/layout/Layout";
+import { useTranslation } from "react-i18next";
+import CookieConsent, { Cookies } from "react-cookie-consent";
+
 import ScrollTop from "./components/elements/scrollTo/ScrollTop";
 import LoginPage from "./components/login/LoginPage";
 import RegisterPage from "./components/register/RegisterPage";
@@ -14,6 +16,8 @@ import RequireAuth from "./components/requireAuth/RequireAuth"
 import { AuthContextProvider } from "./components/context"
 
 function App({ isInitiallyLogged }) {
+
+  const { t } = useTranslation();
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
 
   const handleLogin = () => {
@@ -27,6 +31,17 @@ function App({ isInitiallyLogged }) {
   return (
     <div className="App">
       <AuthContextProvider value={{ isLogged, handleLogin, handleLogout }}>
+      <CookieConsent
+          location="bottom"
+          buttonText={t("cookies.button")}
+          cookieName="wallaclone_consentimiento"
+          style={{ background: "#2B373B" }}
+          buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+          expires={150}
+        >
+          {t("cookies.text")}{" "}
+          
+      </CookieConsent>
         <ScrollTop />
         <Routes>
           {/* Rutas generales */}
@@ -36,7 +51,6 @@ function App({ isInitiallyLogged }) {
 
           {/* Hay que proteger RUTAS. NO OLVIDAR!! */}
           
-            {/*<Route path="/new"  element={<RequireAuth> <AdNew /> </RequireAuth>} />*/}
             <Route path="/new"  element={ <RequireAuth><AdNew /></RequireAuth> } />
             <Route path="/user-profile" element={ <RequireAuth><UserProfile /></RequireAuth> } />     
           
@@ -49,7 +63,6 @@ function App({ isInitiallyLogged }) {
           <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
       </AuthContextProvider>
-      {/* <Layout /> */}
     </div>
   );
 }

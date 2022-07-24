@@ -108,5 +108,10 @@
     "emptyList": {
         "first": "Se el primero en subir algo",
         "create": "Crea nuevos anuncios"
+    },
+    "cookies": {
+        "text": "Este sitio Web utiliza cookies para mejorar la experiencia de usuario.",
+        "button": "Claro que si guapí!!"
     }
+
 }

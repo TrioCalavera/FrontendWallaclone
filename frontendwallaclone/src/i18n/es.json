@@ -88,7 +88,7 @@
         "make": "Haz una oferta",
         "delete": "Borra el anuncio",
         "offers": "Oferta",
-        "make_offer": "Hacer una oferta"
+        "make_offer": "Hacer una oferta a:"
     },
     "empty": {
         "emptyAd": "Aún no hay nada aquí...",

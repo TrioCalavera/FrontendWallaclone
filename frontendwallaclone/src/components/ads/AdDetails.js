@@ -102,8 +102,10 @@ const AdDetails = () => {
                       <img
                         className="img-fluid w-100"
                         src={
-                          process.env.REACT_APP_API_BASE_URL + adDetail.image ||
-                          noImage
+                          adDetail.image !== undefined
+                            ? process.env.REACT_APP_API_BASE_URL +
+                              adDetail.image
+                            : noImage
                         }
                         alt="product-img"
                       />

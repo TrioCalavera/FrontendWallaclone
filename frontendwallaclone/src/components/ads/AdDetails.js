@@ -36,8 +36,8 @@ const AdDetails = () => {
     const execute = async () => {
       setIsLoading(true);
       const adDetail = await getAd(adId[0]);             
-      const user = await getUserAd(adDetail.result.user); 
-      adDetail.result.user = {name: user.result.name, email: user.result.email, _id: user.result._id};   
+      const userAd = await getUserAd(adDetail.result.user); 
+      adDetail.result.user = {name: userAd.result.name, email: userAd.result.email, _id: userAd.result._id};   
       setAdDetail(adDetail.result);      
       isLogged &&
         (await getMe()
@@ -149,7 +149,7 @@ const AdDetails = () => {
                     </p>
                     <Link to="/">{t("details.see")}</Link>
                     <ul className="list-inline mt-20">
-                      { user && user._id === adDetail.user ? (
+                    { user && user._id === adDetail.user._id ? (
                         <li className="list-block-item">
                           <Link
                             to="#"

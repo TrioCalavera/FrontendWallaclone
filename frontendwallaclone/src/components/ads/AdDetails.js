@@ -148,11 +148,7 @@ const AdDetails = () => {
                     </p>
                     <Link to="/">{t("details.see")}</Link>
                     <ul className="list-inline mt-20">
-                      {!user ? (
-                        <li className="list-block-item">
-                          <ContactUs />
-                        </li>
-                      ) : user._id === adDetail.user ? (
+                      { user && user._id === adDetail.user ? (
                         <li className="list-block-item">
                           <Link
                             to="#"
@@ -164,7 +160,7 @@ const AdDetails = () => {
                         </li>
                       ) : (
                         <li className="list-block-item">
-                          <ContactUs />
+                          <ContactUs isLogged = {isLogged}/>
                         </li>
                       )}
                     </ul>

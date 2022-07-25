@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
-export const ContactUs = () => {
+export const ContactUs = ({isLogged}) => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const form = useRef();
 
@@ -13,21 +15,25 @@ export const ContactUs = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_d5rd4no",
-        "template_0jgn9ss",
-        form.current,
-        "Kx3a-jlIIeuC0lw8P"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    if(!isLogged){
+      navigate('/login',{ replace: true });
+    }else{
+      emailjs
+        .sendForm(
+          "service_d5rd4no",
+          "template_0jgn9ss",
+          form.current,
+          "Kx3a-jlIIeuC0lw8P"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+    }
     e.target.reset();
   };
 

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import CookieConsent from "react-cookie-consent";
 
 import ScrollTop from "./components/elements/scrollTo/ScrollTop";
+import ScrollToTop from "./components/elements/scrollTo/ScrollToTop"
 import LoginPage from "./components/login/LoginPage";
 import RegisterPage from "./components/register/RegisterPage";
 import AdsContent from "./components/ads/AdsContent";
@@ -43,25 +44,26 @@ function App({ isInitiallyLogged }) {
           
       </CookieConsent>
         <ScrollTop />
-        <Routes>
-          {/* Rutas generales */}
-          <Route path="/" element={<Navigate to="/adverts" />} />
-          <Route path="/adverts" element={<AdsContent />} />
-          <Route path="/adverts/:adsId" element={<AdDetails />} />
+        <ScrollToTop/>
+        <Routes>          
+            {/* Rutas generales */}
+            <Route path="/" element={<Navigate to="/adverts" />} />
+            <Route path="/adverts" element={<AdsContent />} />
+            <Route path="/adverts/:adsId" element={<AdDetails />} />
 
-          {/* Hay que proteger RUTAS. NO OLVIDAR!! */}
-          
+            {/* Hay que proteger RUTAS. NO OLVIDAR!! */}
+            
             <Route path="/new"  element={ <RequireAuth><AdNew /></RequireAuth> } />
             <Route path="/user-profile" element={ <RequireAuth><UserProfile /></RequireAuth> } />     
-          
+            
 
-          <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-          <Route path="/register" element={<RegisterPage onLogin={handleLogin}/>} />
+            <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+            <Route path="/register" element={<RegisterPage onLogin={handleLogin}/>} />
 
-          {/* Rutas error */}
-          <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<Navigate to="/404" />} />
-        </Routes>
+            {/* Rutas error */}
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<Navigate to="/404" />} />          
+        </Routes>        
       </AuthContextProvider>
     </div>
   );

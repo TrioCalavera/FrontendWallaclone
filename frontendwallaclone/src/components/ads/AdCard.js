@@ -24,8 +24,7 @@ const AdCard = ({ ad }) => {
               <ul className="list-inline product-meta">
                 <li className="list-block-item mb-1">
                   <i className="fa fa-folder-open-o mr-2"></i>
-                  {/* Anuncios creados del Back */}
-                  {ad.tags.map((tag, index) => (
+                  {JSON.parse(ad.tags[0]).map((tag, index) => (
                     <strong
                       className="mr-2 label-color text-capitalize"
                       key={index}
@@ -33,13 +32,6 @@ const AdCard = ({ ad }) => {
                       {tag}
                     </strong>
                   ))}
-                  {/* Parsear anuncios creados del front */}
-                  {/* 
-                  {JSON.parse(ad.tags[0]).map((tag, index) => (
-                    <strong className="mr-2 label-color text-capitalize" key={index}>
-                      {tag}
-                    </strong>
-                  ))} */}
                 </li>
                 <li className="list-block-item">
                   <i className="fa fa-calendar mr-2"></i>

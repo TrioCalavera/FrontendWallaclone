@@ -2,7 +2,7 @@ import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import "./css/adDetails.css";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getAd,getUserAd } from "../../api/service";
+import { getAd, getUserAd } from "../../api/service";
 import { getMe, getOwner } from "../user/service";
 import Modal from "../elements/modal/Modal";
 import NotFound from "../layout/NotFound";
@@ -35,10 +35,14 @@ const AdDetails = () => {
   useEffect(() => {
     const execute = async () => {
       setIsLoading(true);
-      const adDetail = await getAd(adId[0]);             
-      const userAd = await getUserAd(adDetail.result.user); 
-      adDetail.result.user = {name: userAd.result.name, email: userAd.result.email, _id: userAd.result._id};   
-      setAdDetail(adDetail.result);      
+      const adDetail = await getAd(adId[0]);
+      const userAd = await getUserAd(adDetail.result.user);
+      adDetail.result.user = {
+        name: userAd.result.name,
+        email: userAd.result.email,
+        _id: userAd.result._id,
+      };
+      setAdDetail(adDetail.result);
       isLogged &&
         (await getMe()
           .then((user) => setUser(user.result))
@@ -74,14 +78,7 @@ const AdDetails = () => {
                       <li className="list-inline-item">
                         <i className="fa fa-folder-open-o"></i>{" "}
                         {t("details.category")}{" "}
-                        {/* Parsear anuncios creados del front */}
-                        {/* {JSON.parse(adDetail.tags[0]).map((tag, index) => (
-                          <strong className="mr-2 label-color text-capitalize" key={index}>
-                            {tag}
-                          </strong>
-                        ))} */}
-                        {/* Anuncios creados del Back */}
-                        {adDetail.tags.map((tag, index) => (
+                        {JSON.parse(adDetail.tags[0]).map((tag, index) => (
                           <strong
                             className="mr-2 label-color text-capitalize"
                             key={index}
@@ -149,7 +146,7 @@ const AdDetails = () => {
                     </p>
                     <Link to="/">{t("details.see")}</Link>
                     <ul className="list-inline mt-20">
-                    { user && user._id === adDetail.user._id ? (
+                      {user && user._id === adDetail.user._id ? (
                         <li className="list-block-item">
                           <Link
                             to="#"
@@ -161,7 +158,7 @@ const AdDetails = () => {
                         </li>
                       ) : (
                         <li className="list-block-item">
-                          <ContactUs info={adDetail}/>
+                          <ContactUs info={adDetail} />
                         </li>
                       )}
                     </ul>

@@ -2,12 +2,19 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context";
 
-export const ContactUs = ({isLogged}) => {
+
+export const ContactUs = ({info}) => {
+  const { isLogged } = useAuth();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const form = useRef();
 
+  if(!isLogged){
+    info.user.name = "****";
+    info.user.email = "****"
+  }
   // Da error usar el .env ¿?
   const SERVICE_ID = process.env.CONTACT_US_YOUR_SERVICE_ID;
   const TEMPLATE_ID = process.env.CONTACT_US_YOUR_TEMPLATE_ID;
@@ -47,17 +54,19 @@ export const ContactUs = ({isLogged}) => {
               <input
                 type="text"
                 name="nombre"
-                placeholder={t("newadvert.name")}
+                placeholder={info.user.name}
                 className="form-control"
+                disabled
               />
             </div>
             <div className="col-lg-12 pt-2">
               <input
                 type="email"
                 name="email"
-                placeholder={t("users.email")}
+                placeholder={info.user.email}
                 className="form-control"
                 required
+                disabled
               />
             </div>
           </div>

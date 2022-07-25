@@ -2,7 +2,7 @@ import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import "./css/adDetails.css";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getAd } from "../../api/service";
+import { getAd,getUserAd } from "../../api/service";
 import { getMe, getOwner } from "../user/service";
 import Modal from "../elements/modal/Modal";
 import NotFound from "../layout/NotFound";
@@ -35,9 +35,10 @@ const AdDetails = () => {
   useEffect(() => {
     const execute = async () => {
       setIsLoading(true);
-      await getAd(adId[0]).then((adDetail) => {
-        setAdDetail(adDetail.result);
-      });
+      const adDetail = await getAd(adId[0]);             
+      const user = await getUserAd(adDetail.result.user); 
+      adDetail.result.user = {name: user.result.name, email: user.result.email, _id: user.result._id};   
+      setAdDetail(adDetail.result);      
       isLogged &&
         (await getMe()
           .then((user) => setUser(user.result))
@@ -67,7 +68,7 @@ const AdDetails = () => {
                       <li className="list-inline-item">
                         <i className="fa fa-user-o"></i> By{" "}
                         <strong className="label-color">
-                          {t("details.name")}
+                          {adDetail.user.name}
                         </strong>
                       </li>
                       <li className="list-inline-item">
@@ -141,7 +142,7 @@ const AdDetails = () => {
                       alt=""
                     />
                     <h4>
-                      <Link to="/">{t("details.name")}</Link>
+                      <Link to="/">{adDetail.user.name}</Link>
                     </h4>
                     <p className="member-time">
                       {t("details.memberSince")} Jun 27, 2017
@@ -160,7 +161,7 @@ const AdDetails = () => {
                         </li>
                       ) : (
                         <li className="list-block-item">
-                          <ContactUs isLogged = {isLogged}/>
+                          <ContactUs info={adDetail}/>
                         </li>
                       )}
                     </ul>

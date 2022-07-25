@@ -26,6 +26,11 @@ export const getTags = () => {
   return client.get(url);
 };
 
+export const getUserAd = (userId) => {
+  const url = `${adsBaseUrl}/users/${userId}`;
+  return client.get(url);
+}
+
 // Create Ads
 export const setAdverts = (data) => {
   const config = {

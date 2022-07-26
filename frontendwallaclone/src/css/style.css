@@ -2809,11 +2809,9 @@ a.languaje-active:visited {
 }
 
 .card-text {
-  height: 125px !important;
-  text-overflow: ellipsis;
-  overflow: hidden !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
-  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

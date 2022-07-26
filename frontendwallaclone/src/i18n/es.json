@@ -64,7 +64,8 @@
         "editEmail": "Edita la direccion de correo electronico",
         "currentEmail": "Direccion de correo electronico actual",
         "newEmail": "Nueva direccion de correo electronico",
-        "changeEmail": "Cambia la direccion de coreo electronico"
+        "changeEmail": "Cambia la direccion de coreo electronico",
+        "ownerAds": "Mis Anuncios"
     },
     "register": {
         "now": "Registrese ahora",
@@ -75,6 +76,10 @@
     "adscontent": {
         "title": "Tendencia ahora",
         "text": "Visita las tendencias en moda, motor, estilo de vida y miles de cosas mas"
+    },
+    "adsOwner":{
+        "title": "Anuncios propios",
+        "text": "Estos son los anuncios que has publicado hasta hoy."
     },
     "details": {
         "name": "Nombre",

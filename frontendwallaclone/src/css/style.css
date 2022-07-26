@@ -2753,12 +2753,12 @@ form textarea {
 
 @media (min-width: 1200px) {
   .space {
-    height: calc(100vh - 563px);
+    height: calc(100vh - 511px);
   }
 }
 @media (max-width: 1200px) {
   .space {
-    height: calc(100vh - 563px);
+    height: calc(100vh - 537px);
   }
 }
 
@@ -2802,4 +2802,18 @@ a.languaje-active:visited {
   .mb-2-responsive {
     margin-bottom: 0.5rem;
   }
+}
+
+.h100vh {
+  height: 100vh;
+}
+
+.card-text {
+  height: 125px !important;
+  text-overflow: ellipsis;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }

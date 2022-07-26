@@ -1,11 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
-import { getCustomAds, getTags } from "../../api/service";
+import { getTags } from "../../api/service";
 import Select from "react-select";
 import tools from "../../utils/tools";
 import MultiRangeSlider from "../elements/MultiRangeSlider/MultiRangeSlider";
 
-const Searcher = () => {
+const Searcher = ({ handleData }) => {
   const { t } = useTranslation();
 
   //State petición Tags
@@ -62,19 +62,15 @@ const Searcher = () => {
     name && formData.append("name", name);
     tags.length && formData.append("tags", tags);
     formData.append("price", handlePrice());
-    console.log(Object.fromEntries(formData));
 
+    // Transforma e object en una queryString
     let query = new URLSearchParams(formData);
-    console.log(decodeURIComponent(query.toString()));
 
-    try {
-      const customAds = await getCustomAds(
-        decodeURIComponent(query.toString())
-      );
-      handleReset();
-    } catch (error) {
-      console.log(error);
-    }
+    // Lifting
+    handleData(decodeURIComponent(query.toString()));
+
+    // Resetea formulario
+    handleReset();
   };
 
   return (

@@ -3,11 +3,11 @@ import HeaderPage from "./HeaderPage";
 import FooterPage from "./FooterPage";
 import Subfooter from "./Subfooter";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, handleData }) => {
   return (
     <div>
       <Navbar />
-      <HeaderPage />
+      <HeaderPage handleData={handleData} />
       {children}
       <FooterPage />
       <Subfooter />

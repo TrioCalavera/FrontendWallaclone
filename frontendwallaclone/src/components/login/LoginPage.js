@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import LayoutWithoutBanner from "../layout/LayoutWithoutBanner";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { login } from "./service";
@@ -102,9 +102,6 @@ function LoginPage({ onLogin }) {
                     >
                       {t("register.login")}
                     </button>
-                    {/* <Link to="/login" className="mt-3 d-block text-primary">
-                      Forget Password?
-                    </Link> */}
                     <Link className="mt-3 d-block text-primary" to="/register">
                     {t("register.now")}
                     </Link>

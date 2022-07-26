@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getTags } from "../../api/service";
 import { useTranslation } from "react-i18next";
 
-const HeaderPage = () => {
+const HeaderPage = ({ handleData }) => {
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const HeaderPage = () => {
     execute();
   }, []);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <section className="hero-area bg-1 text-center overly">
@@ -38,7 +38,7 @@ const HeaderPage = () => {
                 </ul>
               </div>
             </div>
-            <Searcher />
+            <Searcher handleData={handleData} />
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import Error from "../../images/404.png";
 const NotFound = () => {
   const { t } = useTranslation();
   return (
-    <section className="section bg-gray">
+    <section className="section bg-gray flex-center-center h100vh">
       <div className="container">
         <div className="row">
           <div className="col-md-6 text-center mx-auto">

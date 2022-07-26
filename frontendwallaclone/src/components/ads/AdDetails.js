@@ -3,13 +3,12 @@ import "./css/adDetails.css";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAd, getUserAd } from "../../api/service";
-import { getMe, getOwner } from "../user/service";
+import { getMe } from "../user/service";
 import Modal from "../elements/modal/Modal";
-import NotFound from "../layout/NotFound";
-import Spinner from "../elements/spinner/Spinner";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../context";
 import { ContactUs } from "../elements/ContactUs/ContactUs";
+import EmptyAd from "../elements/emptyAd/EmptyAd";
 
 import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
@@ -57,9 +56,7 @@ const AdDetails = () => {
       {modal && <Modal handleModalHidden={handleModalHidden} />}
 
       {!adDetail ? (
-        <NotFound />
-      ) : isLoading ? (
-        <Spinner />
+        <EmptyAd />
       ) : (
         <section className="section bg-gray">
           <div className="container">

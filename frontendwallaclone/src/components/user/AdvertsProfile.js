@@ -20,8 +20,7 @@ const AdvertsProfile = () => {
         execute();
         return () => {};
       }, []);
-
-      console.log(adsUser);
+      
 return (
     
       <section className="popular-deals section bg-gray">

@@ -2815,3 +2815,7 @@ a.languaje-active:visited {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.btn:focus {
+  color: #fff !important;
+}

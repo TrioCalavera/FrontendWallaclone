@@ -31,8 +31,9 @@ export const ContactUs = ({info}) => {
       };      
       sendEmailAd(data)
         .then(
-          (result) => {
-            console.log(result.text);
+          (response) => {
+            window.alert(response.result);
+            console.log(response.result);
           },
           (error) => {
             console.log(error.text);

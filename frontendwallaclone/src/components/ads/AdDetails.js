@@ -3,7 +3,7 @@ import "./css/adDetails.css";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAd, getUserAd } from "../../api/service";
-import { getMe, getOwner } from "../user/service";
+import { getMe } from "../user/service";
 import Modal from "../elements/modal/Modal";
 import NotFound from "../layout/NotFound";
 import Spinner from "../elements/spinner/Spinner";
@@ -39,7 +39,6 @@ const AdDetails = () => {
       const userAd = await getUserAd(adDetail.result.user);
       adDetail.result.user = {
         name: userAd.result.name,
-        email: userAd.result.email,
         _id: userAd.result._id,
       };
       setAdDetail(adDetail.result);

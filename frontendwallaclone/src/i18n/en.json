@@ -64,7 +64,8 @@
         "editEmail": "Edit Email Address",
         "currentEmail": "Current Email",
         "newEmail": "New Email",
-        "changeEmail": "Change Email"
+        "changeEmail": "Change Email",
+        "ownerAds": "Owns Adds"
     },
     "register": {
         "now": "Register Now",
@@ -75,6 +76,10 @@
     "adscontent": {
         "title": "Trending Adds",
         "text": "Visit the trends in fashion, motor, lifestyle and thousands of other things"
+    },
+    "adsOwner":{
+        "title": "Owns Adds",
+        "text": "These are the ads you have posted so far today."
     },
     "details": {
         "name": "Name",

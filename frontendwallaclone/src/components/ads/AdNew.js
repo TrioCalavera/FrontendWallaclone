@@ -70,7 +70,9 @@ const AdNew = () => {
     formData.append("description", description);
     image !== undefined && formData.append("image", image);
     formData.append("sale", sale);
-    formData.append("tags", JSON.stringify(tags));
+    for (var i = 0; i < tags.length; i++) {
+      formData.append("tags", tags[i]);
+    }       
 
     try {
       resetError();

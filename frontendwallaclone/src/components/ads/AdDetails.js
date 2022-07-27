@@ -13,9 +13,7 @@ import EmptyAd from "../elements/emptyAd/EmptyAd";
 import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
 
-const AdDetails = () => {
-  const { isLogged } = useAuth();
-
+const AdDetails = ({isLogged}) => {
   const [user, setUser] = useState(null);
 
   const [adDetail, setAdDetail] = useState(null);
@@ -38,7 +36,6 @@ const AdDetails = () => {
       const userAd = await getUserAd(adDetail.result.user);
       adDetail.result.user = {
         name: userAd.result.name,
-        email: userAd.result.email,
         _id: userAd.result._id,
       };
       setAdDetail(adDetail.result);
@@ -75,7 +72,7 @@ const AdDetails = () => {
                       <li className="list-inline-item">
                         <i className="fa fa-folder-open-o"></i>{" "}
                         {t("details.category")}{" "}
-                        {JSON.parse(adDetail.tags[0]).map((tag, index) => (
+                        {adDetail.tags.map((tag, index) => (
                           <strong
                             className="mr-2 label-color text-capitalize"
                             key={index}
@@ -155,7 +152,7 @@ const AdDetails = () => {
                         </li>
                       ) : (
                         <li className="list-block-item">
-                          <ContactUs info={adDetail} />
+                          <ContactUs info={adDetail} isLogged={isLogged} />
                         </li>
                       )}
                     </ul>

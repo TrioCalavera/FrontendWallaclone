@@ -24,7 +24,7 @@ const AdCard = ({ ad }) => {
               <ul className="list-inline product-meta">
                 <li className="list-block-item mb-1">
                   <i className="fa fa-folder-open-o mr-2"></i>
-                  {JSON.parse(ad.tags[0]).map((tag, index) => (
+                  {ad.tags.map((tag, index) => (
                     <strong
                       className="mr-2 label-color text-capitalize"
                       key={index}

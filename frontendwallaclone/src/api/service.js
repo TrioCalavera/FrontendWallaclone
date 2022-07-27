@@ -26,10 +26,20 @@ export const getTags = () => {
   return client.get(url);
 };
 
+export const getMyAds = () => {
+  const url = `${adsBaseUrl}/adverts/mine`;
+  return client.get(url);
+};
+
 export const getUserAd = (userId) => {
   const url = `${adsBaseUrl}/users/${userId}`;
   return client.get(url);
 };
+
+export const sendEmailAd = (data) => {
+  const url = `${adsBaseUrl}/adverts/email`;
+  return client.post(url, data);
+}
 
 // Create Ads
 export const setAdverts = (data) => {

@@ -1,24 +1,26 @@
 import { useState, useEffect } from "react";
 import Layout from "../layout/Layout";
 import AdCard from "./AdCard";
-import { getLatestAds } from "../../api/service";
+import { getLatestAds, getCustomAds } from "../../api/service";
 import EmptyListAds from "../elements/EmptyList/EmptyListAds";
 import Spinner from "../elements/spinner/Spinner";
 import { useTranslation } from "react-i18next";
+import tools from "../../utils/tools";
 
 const AdsContent = () => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [ads, setAds] = useState([]);
+
   useEffect(() => {
     const execute = async () => {
       try {
         setIsLoading(true);
         const ads = await getLatestAds();
+
         // Ordenados de mas nuevos a mas antiguos
-        ads.result.sort((b, a) => {
-          return a.create - b.create;
-        });
+        tools.sortArray(ads.result);
+
         setAds(ads.result);
         setIsLoading(false);
       } catch (error) {
@@ -26,10 +28,22 @@ const AdsContent = () => {
       }
     };
     execute();
-    return () => {};
   }, []);
+
+  const handleData = async (data) => {
+    try {
+      setIsLoading(true);
+      const ads = await getCustomAds(data);
+      tools.sortArray(ads.result);
+      setAds(ads.result);
+      setIsLoading(false);
+    } catch (error) {
+      console.log("error", error);
+      setIsLoading(false);
+    }
+  };
   return (
-    <Layout>
+    <Layout handleData={handleData}>
       <section className="popular-deals section bg-gray">
         <div className="container">
           <div className="row">

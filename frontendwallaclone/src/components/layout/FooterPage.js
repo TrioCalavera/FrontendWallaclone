@@ -5,10 +5,7 @@ import google from "../../images/google-play-store.png";
 import logoFooter from "../../images/logo-footer.png";
 import { useTranslation } from "react-i18next";
 
-
-
 const FooterPage = () => {
-
   const { t } = useTranslation();
 
   return (
@@ -22,9 +19,7 @@ const FooterPage = () => {
               {/* <!-- footer logo --> */}
               <img src={logoFooter} alt="" />
               {/* <!-- description --> */}
-              <p className="alt-color">
-                {t("footer.textFooter")}
-              </p>
+              <p className="alt-color">{t("footer.textFooter")}</p>
             </div>
           </div>
           {/* <!-- Link list --> */}

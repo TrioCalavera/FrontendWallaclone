@@ -10,7 +10,7 @@ export const getLatestAds = () => {
 
 // Custom Ads
 export const getCustomAds = (data) => {
-  const url = `${adsBaseUrl}/adverts/?${data}`;
+  const url = `${adsBaseUrl}/adverts/?sort=create&${data}`;
   return client.get(url);
 };
 
@@ -34,7 +34,7 @@ export const getMyAds = () => {
 export const getUserAd = (userId) => {
   const url = `${adsBaseUrl}/users/${userId}`;
   return client.get(url);
-}
+};
 
 export const sendEmailAd = (data) => {
   const url = `${adsBaseUrl}/adverts/email`;

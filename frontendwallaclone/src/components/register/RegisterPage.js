@@ -38,11 +38,11 @@ const RegisterPage = ({ onLogin }) => {
       await register(credentials)
         .then(() => {
           const from = location.state?.from?.pathname || "/";
+          onLogin();
           navigate(from, { replace: true });
         })
         .catch((err) => window.alert(err.error));
-      setIsLoading(false);
-      onLogin();
+      setIsLoading(false);      
     } catch (error) {
       setIsLoading(false);
       setError(error);

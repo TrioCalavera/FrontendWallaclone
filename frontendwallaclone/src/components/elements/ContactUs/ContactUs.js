@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import { sendEmailAd } from "../../../api/service";
 
-export const ContactUs = ({info}) => {
-  const { isLogged } = useAuth();
+export const ContactUs = ({info, isLogged}) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const form = useRef();

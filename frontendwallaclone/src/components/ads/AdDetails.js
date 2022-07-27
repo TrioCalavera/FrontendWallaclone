@@ -14,9 +14,7 @@ import { ContactUs } from "../elements/ContactUs/ContactUs";
 import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
 
-const AdDetails = () => {
-  const { isLogged } = useAuth();
-
+const AdDetails = ({isLogged}) => {
   const [user, setUser] = useState(null);
 
   const [adDetail, setAdDetail] = useState(null);
@@ -157,7 +155,7 @@ const AdDetails = () => {
                         </li>
                       ) : (
                         <li className="list-block-item">
-                          <ContactUs info={adDetail} />
+                          <ContactUs info={adDetail} isLogged={isLogged} />
                         </li>
                       )}
                     </ul>

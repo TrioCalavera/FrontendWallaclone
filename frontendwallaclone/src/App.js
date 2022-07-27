@@ -49,7 +49,7 @@ function App({ isInitiallyLogged }) {
             {/* Rutas generales */}
             <Route path="/" element={<Navigate to="/adverts" />} />
             <Route path="/adverts" element={<AdsContent />} />
-            <Route path="/adverts/:adsId" element={<AdDetails />} />
+            <Route path="/adverts/:adsId" element={<AdDetails isLogged={isLogged}/>} />
 
             {/* Hay que proteger RUTAS. NO OLVIDAR!! */}
             

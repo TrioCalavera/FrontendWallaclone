@@ -75,7 +75,7 @@ const AdDetails = ({isLogged}) => {
                       <li className="list-inline-item">
                         <i className="fa fa-folder-open-o"></i>{" "}
                         {t("details.category")}{" "}
-                        {JSON.parse(adDetail.tags[0]).map((tag, index) => (
+                        {adDetail.tags.map((tag, index) => (
                           <strong
                             className="mr-2 label-color text-capitalize"
                             key={index}

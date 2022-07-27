@@ -13,7 +13,7 @@ import EmptyAd from "../elements/emptyAd/EmptyAd";
 import noImage from "../../images/no-image.jpg";
 import userThumb from "../../images/user-gray.png";
 
-const AdDetails = ({isLogged}) => {
+const AdDetails = ({ isLogged }) => {
   const [user, setUser] = useState(null);
 
   const [adDetail, setAdDetail] = useState(null);
